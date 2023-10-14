@@ -3,8 +3,11 @@
 // import viteLogo from "/vite.svg";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import LogInPage from "./pages/logInPage";
+import LogInPage from "./pages/LogInPage";
 import PublicRoute from "./hooks/PublicRoute";
+import PrivateRoute from "./hooks/PrivateRoute";
+import SharedLayout from "./components/SharedLayout/SharedLayout";
+import DashboardPage from "./pages/DashboardPage";
 
 function App() {
   return (
@@ -19,18 +22,17 @@ function App() {
           }
         />
 
-        {/* <Route
+        <Route
           path="/"
           element={
             <PrivateRoute>
-              <Layout />
+              <SharedLayout />
             </PrivateRoute>
           }
         >
-          <Route index element={<Main />} />
-          <Route path="/add" element={<AddRecipePage />} />
-       
-        </Route> */}
+          <Route index element={<DashboardPage />} />
+          {/* <Route path="/add" element={<AddRecipePage />} /> */}
+        </Route>
       </Routes>
     </>
   );
