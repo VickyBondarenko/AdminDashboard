@@ -1,7 +1,13 @@
+import Logo from "../../assets/image/image-logo-auth.png";
+
 const Header = () => {
   return (
     <>
-      <p className="font-semibold text-mainText">E-Pharmacy</p>
+      <div className="flex flex-row items-center gap-[14px]">
+        {" "}
+        <img className="  w-11 h-11" src={Logo} alt="Logo" />
+        <p className="font-semibold text-mainText">E-Pharmacy</p>
+      </div>
     </>
   );
 };

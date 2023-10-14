@@ -1,7 +1,9 @@
 import { Formik, Form, Field } from "formik";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/auth/authThunk";
 
 const AuthForm = () => {
-  //   const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   //   const schema = LoginSchema;
 
@@ -13,7 +15,7 @@ const AuthForm = () => {
   const initialValues = { ...userValues };
 
   const handleOnSubmit = (values, { resetForm }) => {
-    // dispatch(loginUser(values));
+    dispatch(loginUser(values));
     console.log("values", values);
 
     resetForm();
