@@ -1,5 +1,5 @@
 export const selectIsAuth = (state) => Boolean(state.auth.token);
-export const selectUserInfo = (state) => state.auth.user;
+export const selectUserEmail = (state) => state.auth.user.email;
 export const selectUserId = (state) => {
   const { _id } = state.auth.user;
   if (_id) {

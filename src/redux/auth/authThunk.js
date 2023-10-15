@@ -15,7 +15,8 @@ export const loginUser = createAsyncThunk(
         data: { user, token },
       } = await axios.post(`/api/user/login`, userData);
       setAuthHeader(token);
-      localStorage.setItem("token", token);
+      // localStorage.setItem("token", token);
+      // localStorage.setItem("user", user);
       return { user, token };
     } catch (error) {
       Notify.failure("Incorect email or password");
@@ -25,7 +26,7 @@ export const loginUser = createAsyncThunk(
 );
 
 export const getCurrentUser = createAsyncThunk(
-  "auth/current",
+  "/api/auth/current",
   async (_, { rejectWithValue, getState }) => {
     const { token } = getState().auth;
 
@@ -54,7 +55,7 @@ export const getCurrentUser = createAsyncThunk(
 );
 
 export const logoutUser = createAsyncThunk(
-  "auth/logout",
+  "/api/auth/logout",
   async (_, { rejectWithValue, getState }) => {
     const { token } = getState().auth;
     if (!token) {
@@ -62,7 +63,7 @@ export const logoutUser = createAsyncThunk(
     }
     try {
       setAuthHeader(token);
-      const { data } = await axios.post(`/api/user/logout`, token);
+      const { data } = await axios.get(`/api/user/logout`, token);
       clearAuthHeader();
       return data;
     } catch (error) {
