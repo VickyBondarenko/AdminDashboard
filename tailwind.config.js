@@ -4,6 +4,9 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      height: {
+        screenMinusHeader: "calc(100vh - 93px)",
+      },
       colors: {
         accent: "#59B17A",
         mainText: "#1D1E21",
@@ -11,6 +14,7 @@ export default {
         whiteText: "#ffffff",
         borderLight: "#1D1E211A",
         mainBg: "#F7F8FA",
+        iconGrey: "#DCDDDF",
       },
       fontSize: {
         customXxs: ["12px", "14px"],

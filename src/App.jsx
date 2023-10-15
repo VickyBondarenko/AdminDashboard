@@ -40,6 +40,7 @@ function App() {
           <Route path="/products" element={<AllProductsPage />} />
           <Route path="/suppliers" element={<AllSuppliersPage />} />
           <Route path="/customers" element={<CustomersDataPage />} />
+          {/* <Route path="*" element={<Page404 />} /> */}
         </Route>
       </Routes>
     </>

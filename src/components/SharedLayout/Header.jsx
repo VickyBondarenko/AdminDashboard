@@ -7,8 +7,12 @@ import LogOutBtn from "./LogOutBtn";
 import { selectUserEmail, selectUserId } from "../../redux/auth/authSelector";
 import { logoutUser } from "../../redux/auth/authThunk";
 import SubTitle from "./SubTitle";
+import { useState } from "react";
+import SideBarMenu from "./SideBarMenu";
 
 const Header = () => {
+  const [isSideBarMenuOpen, setIsSideBarMenuOpen] = useState(false);
+
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -21,7 +25,6 @@ const Header = () => {
 
   let locationText;
   const pageName = location.pathname;
-  console.log("pageName", pageName);
 
   switch (pageName) {
     case "/dashboard":
@@ -52,17 +55,34 @@ const Header = () => {
     dispatch(logoutUser(userId));
   };
 
+  const handleOpenSideBarMenu = () => {
+    setIsSideBarMenuOpen(true);
+  };
+
   return (
     <>
       <div className="py-6 px-5 flex flex-row items-center gap-5 border-b border-borderLight w-screen justify-between">
         <div className=" flex flex-row items-center gap-5">
           {!isDesktop && (
-            <svg width="32" height="32" stroke="#1D1E21" fill="#1D1E21">
-              <use xlinkHref={`${IconsSVG}#icon-menu-burger`} />
-            </svg>
+            <>
+              <svg
+                className="w-8 h-8 fill-black stroke-black"
+                width="32"
+                height="32"
+                stroke="#1D1E21"
+                fill="#1D1E21"
+                onClick={handleOpenSideBarMenu}
+              >
+                <use xlinkHref={`${IconsSVG}#icon-menu-burger`} />
+              </svg>
+              <SideBarMenu
+                isOpen={isSideBarMenuOpen}
+                setIsOpen={setIsSideBarMenuOpen}
+              />
+            </>
           )}
           <Link to="/dashboard">
-            <img className="  w-11 h-11" src={Logo} alt="Logo" />
+            <img className="w-10 h-10" src={Logo} alt="Logo" />
           </Link>
 
           <div>
