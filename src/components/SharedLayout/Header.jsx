@@ -1,22 +1,21 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/image/logo.svg";
 import IconsSVG from "../../assets/svg/symbol-defs.svg";
 import LogOutBtn from "./LogOutBtn";
-import { selectUserEmail, selectUserId } from "../../redux/auth/authSelector";
-import { logoutUser } from "../../redux/auth/authThunk";
+import { selectUserEmail } from "../../redux/auth/authSelector";
+
 import SubTitle from "./SubTitle";
 import { useState } from "react";
 import SideBarMenu from "./SideBarMenu";
+import Title from "./Title";
 
 const Header = () => {
   const [isSideBarMenuOpen, setIsSideBarMenuOpen] = useState(false);
 
-  const dispatch = useDispatch();
   const location = useLocation();
 
-  const userId = useSelector(selectUserId);
   const userEmail = useSelector(selectUserEmail);
 
   const isDesktop = useMediaQuery({
@@ -51,10 +50,6 @@ const Header = () => {
       console.log("Invalid subscription type");
   }
 
-  const handleLogOut = () => {
-    dispatch(logoutUser(userId));
-  };
-
   const handleOpenSideBarMenu = () => {
     setIsSideBarMenuOpen(true);
   };
@@ -86,7 +81,7 @@ const Header = () => {
           </Link>
 
           <div>
-            <h2 className="font-semibold text-mainText">Medicine store</h2>
+            <Title />
             <div className="flex flex-row items-center">
               <SubTitle text={locationText} />
               <div className="border-r h-3  border-lighterText mx-2"></div>
@@ -95,11 +90,7 @@ const Header = () => {
           </div>
         </div>
 
-        {isDesktop && (
-          <div onClick={handleLogOut}>
-            <LogOutBtn />
-          </div>
-        )}
+        {isDesktop && <LogOutBtn />}
       </div>
     </>
   );

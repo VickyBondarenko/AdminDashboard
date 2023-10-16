@@ -8,6 +8,7 @@ const SideBarMenu = ({ isOpen, setIsOpen }) => {
     setIsOpen(false);
     document.body.classList.remove("overflow-hidden");
   };
+
   return (
     <>
       <div className="relative z-[1000] border-accentMain">
@@ -19,7 +20,7 @@ const SideBarMenu = ({ isOpen, setIsOpen }) => {
           shouldCloseOnOverlayClick={true}
           className="fixed top-0  bottom-0 left-0  z-[9999]     outline-none bg-mainBg h-full"
         >
-          <div className=" flex flex-col justify-between border-r border-borderLight px-[20px] py-6 h-screen">
+          <div className=" flex flex-col justify-between border-r border-borderLight px-[20px] py-7 h-screen">
             <div>
               <div className=" pb-10 md:pb-48">
                 <svg
@@ -32,6 +33,7 @@ const SideBarMenu = ({ isOpen, setIsOpen }) => {
 
               <Navigation />
             </div>
+
             <LogOutBtn />
           </div>
         </Modal>
