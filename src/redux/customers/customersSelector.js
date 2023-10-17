@@ -1,0 +1,3 @@
+export const selectCustomers = (state) => state.customers.allCustomers;
+
+export const getIsRefreshing = (state) => state.customers.isRefreshing;

@@ -6,7 +6,7 @@ const IncomeExpenses = ({ data }) => {
         <caption>Today</caption>
         <tbody>
           {data.map((row) => (
-            <tr key={row.id}>
+            <tr key={row._id}>
               <td>{row.amount > 0 ? "Income" : "Expense"}</td>
               <td>{row.name}</td>
               <td>{row.amount}</td>

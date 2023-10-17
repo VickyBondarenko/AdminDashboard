@@ -1,37 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getDashboardData } from "./dashboardThunk";
+import { getAllCustomers, fetchSearchedCustomers } from "./customersThunk";
 
-const DASHBOARD_REDUCER = "DASHBOARD_REDUCER";
+const CUSTOMERS_REDUCER = "CUSTOMERS_REDUCER";
 
-const dashboardInitialState = {
-  statistic: {
-    allCustomers: "",
-    allProducts: "",
-    allSuppliers: "",
-  },
-
-  recentCustomers: [],
-  recentOperations: [],
+const customersInitialState = {
+  allCustomers: [],
+  totalPages: "",
   isLoading: true,
   isRefreshing: false,
   error: null,
 };
 
-const dashboardSlice = createSlice({
-  name: DASHBOARD_REDUCER,
-  initialState: dashboardInitialState,
+const customersSlice = createSlice({
+  name: CUSTOMERS_REDUCER,
+  initialState: customersInitialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
 
-      .addCase(getDashboardData.fulfilled, (state, action) => {
-        state.statistic = action.payload.data.statistic;
-        state.recentCustomers = action.payload.data.recentCustomers.slice(0, 5);
-        state.recentOperations = action.payload.data.recentOperations.slice(
-          0,
-          5
-        );
+      .addCase(getAllCustomers.fulfilled, (state, action) => {
+        state.allCustomers = action.payload;
+      })
+      .addCase(fetchSearchedCustomers.fulfilled, (state, action) => {
+        state.allCustomers = action.payload.data;
+        state.totalPages = action.payload.totalPages;
       })
 
       .addMatcher(
@@ -61,4 +54,4 @@ const dashboardSlice = createSlice({
   },
 });
 
-export default dashboardSlice.reducer;
+export default customersSlice.reducer;

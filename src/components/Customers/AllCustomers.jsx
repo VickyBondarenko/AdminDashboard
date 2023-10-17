@@ -1,14 +1,15 @@
-const RecentCustomers = ({ data }) => {
+const AllCustomers = ({ data }) => {
   return (
     <>
       <table>
-        <caption>Recent Customers</caption>
+        <caption>All Customers</caption>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>User info</th>
             <th>Email</th>
-            <th>Spent</th>
-            <th>Country</th>
+            <th>Adress</th>
+            <th>Phone</th>
+            <th>Register date</th>
           </tr>
         </thead>
         <tbody>
@@ -16,8 +17,9 @@ const RecentCustomers = ({ data }) => {
             <tr key={row._id}>
               <td>{row.name}</td>
               <td>{row.email}</td>
-              <td>{row.spent}</td>
-              <td>{row.country}</td>
+              <td>{row.address}</td>
+              <td>{row.phone}</td>
+              <td>{row.data}</td>
             </tr>
           ))}
         </tbody>
@@ -26,4 +28,4 @@ const RecentCustomers = ({ data }) => {
   );
 };
 
-export default RecentCustomers;
+export default AllCustomers;
