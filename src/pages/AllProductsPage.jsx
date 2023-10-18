@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FilterForm from "../components/FilterForm";
 import AllProducts from "../components/Products/AllProducts";
@@ -10,6 +10,8 @@ import {
 } from "../redux/products/productsThunk";
 
 const AllProductsPage = () => {
+  //   const [page, setPage] = useState(1);
+  // const totalPages = useSelector(selectTotalPages);
   const dispatch = useDispatch();
 
   useEffect(() => {

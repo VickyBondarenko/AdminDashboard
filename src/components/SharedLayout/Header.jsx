@@ -56,7 +56,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="py-6 px-5 flex flex-row items-center gap-5 border-b border-borderLight w-screen justify-between">
+      <div className="py-6 px-5 flex flex-row items-center gap-5 border-b border-borderLight w-screenMinusScroll justify-between">
         <div className=" flex flex-row items-center gap-5">
           {!isDesktop && (
             <>

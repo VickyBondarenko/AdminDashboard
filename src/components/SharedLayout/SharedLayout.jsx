@@ -13,7 +13,7 @@ const SharedLayout = () => {
 
   return (
     <>
-      <div className=" w-full">
+      <div className="max-w-screen">
         <Header />
         <div className="flex flex-row">
           {isDesktop && <SideBar />}
