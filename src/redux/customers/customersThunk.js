@@ -3,9 +3,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getAllCustomers = createAsyncThunk(
   "customers",
-  async (_, { rejectWithValue }) => {
+  async ({ page, limit }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/api/customers");
+      const { data } = await axios.get(
+        `/api/customers?page=${page}&limit=${limit}`
+      );
 
       return data;
     } catch (error) {

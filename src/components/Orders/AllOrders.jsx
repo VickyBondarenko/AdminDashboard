@@ -40,11 +40,10 @@ const AllOrders = ({ data }) => {
   return (
     <>
       <div className="border border-borderLight rounded-lg w-[1280px]">
-        <caption className="bg-greenLight p-5  text-customLg font-semibold text-start w-[1280px]">
+        <div className="bg-greenLight p-5  text-customLg font-semibold text-start w-[1280px]">
           All Orders
-        </caption>
+        </div>
         <table className="ml-5">
-          {/* <div className="px-5"> */}
           <thead className="py-5 text-start">
             <tr className="mx-5 px-5 py-5 text-lighterText text-customS font font-medium">
               <th className=" py-5 border-b text-start w-[260px]">User info</th>
@@ -99,7 +98,6 @@ const AllOrders = ({ data }) => {
               </tr>
             ))}
           </tbody>
-          {/* </div> */}
         </table>
       </div>
     </>

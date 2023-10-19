@@ -48,7 +48,6 @@ const AllOrdersPage = () => {
           placeholder={"User Name"}
           fetchData={fetchData}
           onChangePage={setPage}
-          on
           onChangeWordQuery={setWordQuery}
         />
 

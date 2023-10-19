@@ -14,12 +14,12 @@ const DashboardPage = () => {
   }, [dispatch]);
 
   const data = useSelector(selectDashboard);
-  console.log("data", data);
+
   const { statistic, recentCustomers, recentOperations } = data;
   return (
     <>
-      <div className="px-5 py-5">
-        <div className="  flex flex-wrap justify-between gap-5">
+      <div className="px-10 pb-10">
+        <div className="  flex flex-wrap justify-between gap-5 pb-10 pt-5 w-[760px]">
           <Statistic
             title="All products"
             icon="icon-money-finance"
@@ -36,8 +36,10 @@ const DashboardPage = () => {
             count={statistic.allCustomers}
           />
         </div>
-        <RecentCustomers data={recentCustomers} />
-        <IncomeExpenses data={recentOperations} />
+        <div className="flex flex-row gap-5">
+          <RecentCustomers data={recentCustomers} />
+          <IncomeExpenses data={recentOperations} />
+        </div>
       </div>
     </>
   );

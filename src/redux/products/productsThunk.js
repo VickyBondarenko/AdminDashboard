@@ -1,11 +1,15 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 export const getAllProducts = createAsyncThunk(
   "products",
-  async (_, { rejectWithValue }) => {
+  async ({ page, limit }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/api/products");
+      const { data } = await axios.get(
+        `/api/products?page=${page}&limit=${limit}`
+      );
 
       return data;
     } catch (error) {
@@ -26,6 +30,59 @@ export const fetchSearchedProducts = createAsyncThunk(
 
       return response.data;
     } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteProduct = createAsyncThunk(
+  "products/delete",
+  async (productId, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(`/api/products/${productId}`);
+      if (response.status === 204) {
+        toast.success("Product deleted successfully!", {});
+        return productId;
+      } else {
+        return;
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+  {
+    condition: (_, { getState }) => {
+      const isLoading = getState().isLoading;
+      if (isLoading) {
+        return false;
+      }
+    },
+  }
+);
+
+export const addProduct = createAsyncThunk(
+  "products/addProduct",
+  async (formData, { rejectWithValue }) => {
+    try {
+      const response = await axios.post("/api/products", formData);
+      console.log("response", response);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const editProduct = createAsyncThunk(
+  "products/editProduct",
+  async ({ productId, formData }, { rejectWithValue }) => {
+    try {
+      const response = await axios.put(`/api/products/${productId}`, formData);
+      return response.data;
+    } catch (error) {
+      if (error.response.data.message === "Provide all necessary fields") {
+        toast.warn("Provide all filds!", {});
+      }
       return rejectWithValue(error.message);
     }
   }

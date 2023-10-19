@@ -1,39 +1,82 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AllCustomers from "../components/Customers/AllCustomers";
 import FilterForm from "../components/FilterForm";
-import { selectCustomers } from "../redux/customers/customersSelector";
+import { Pagination } from "../components/Pagination/Pagination";
+import {
+  selectCustomers,
+  selectTotalPages,
+} from "../redux/customers/customersSelector";
 import {
   getAllCustomers,
   fetchSearchedCustomers,
 } from "../redux/customers/customersThunk";
 
 const CustomersDataPage = () => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getAllCustomers());
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
+  // const data = useSelector(selectCustomers);
+
+  // const fetchData = (params) => {
+  //   dispatch(fetchSearchedCustomers(params));
+  // };
+  const [page, setPage] = useState(1);
+  const [wordQuery, setWordQuery] = useState("");
+  const totalPages = useSelector(selectTotalPages);
   const dispatch = useDispatch();
+  const limit = "5";
 
   useEffect(() => {
-    dispatch(getAllCustomers());
+    if (wordQuery === "") {
+      dispatch(getAllCustomers({ page, limit }));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [page, limit]);
 
   const data = useSelector(selectCustomers);
-  console.log("data", data);
 
   const fetchData = (params) => {
     dispatch(fetchSearchedCustomers(params));
   };
 
+  const onChangePage = (currentPage) => {
+    if (currentPage !== "...") {
+      const number = Number(currentPage);
+
+      const element = document.getElementById("ahcnor1");
+      if (element) {
+        element.scrollIntoView({ block: "start", behavior: "smooth" });
+      }
+
+      setPage(number);
+    }
+  };
+
   return (
     <>
-      <div className="px-5 py-6 ">
-        CustomersPage
+      <div className="px-10  ">
         <FilterForm
-          page={"1"}
+          page={page}
           limit={"5"}
           placeholder={"User Name"}
           fetchData={fetchData}
+          onChangePage={setPage}
+          onChangeWordQuery={setWordQuery}
         />
         <AllCustomers data={data} />
+
+        {totalPages !== 1 && totalPages && (
+          <Pagination
+            totalPages={totalPages}
+            currentpage={page}
+            onChangePage={onChangePage}
+          />
+        )}
       </div>
     </>
   );

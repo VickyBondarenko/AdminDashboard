@@ -22,7 +22,7 @@ const SideBarMenu = ({ isOpen, setIsOpen }) => {
         >
           <div className=" flex flex-col justify-between border-r border-borderLight px-[20px] py-7 h-screen">
             <div>
-              <div className=" pb-10 md:pb-48">
+              <div className=" pb-10 md:pb-48 cursor-pointer">
                 <svg
                   className={`w-8 h-8  fill-black stroke-black`}
                   onClick={handleCloseModal}

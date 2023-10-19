@@ -20,7 +20,8 @@ const productsSlice = createSlice({
     builder
 
       .addCase(getAllProducts.fulfilled, (state, action) => {
-        state.allProducts = action.payload;
+        state.allProducts = action.payload.data;
+        state.totalPages = action.payload.totalPages;
       })
       .addCase(fetchSearchedProducts.fulfilled, (state, action) => {
         state.allProducts = action.payload.data;

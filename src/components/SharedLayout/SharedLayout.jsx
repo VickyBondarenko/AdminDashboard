@@ -4,7 +4,6 @@ import { useMediaQuery } from "react-responsive";
 
 import Header from "./Header";
 import SideBar from "./Sidebar";
-// import Sidebar from "./Sidebar";
 
 const SharedLayout = () => {
   const isDesktop = useMediaQuery({

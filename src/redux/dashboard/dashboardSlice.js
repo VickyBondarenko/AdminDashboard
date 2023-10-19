@@ -30,7 +30,7 @@ const dashboardSlice = createSlice({
         state.recentCustomers = action.payload.data.recentCustomers.slice(0, 5);
         state.recentOperations = action.payload.data.recentOperations.slice(
           0,
-          5
+          6
         );
       })
 
