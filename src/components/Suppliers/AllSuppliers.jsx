@@ -1,36 +1,7 @@
 import IconsSVG from "../../assets/svg/symbol-defs.svg";
 
-const AllSuppliers = ({ data }) => {
+const AllSuppliers = ({ data, handleOpenEditModal, isOpen, setIsOpen }) => {
   return (
-    // <>
-    //   <table>
-    //     <caption>All Suppliers</caption>
-    //     <thead>
-    //       <tr>
-    //         <th>Suppliers info</th>
-    //         <th>Adress</th>
-    //         <th>Company</th>
-    //         <th>Delivery date</th>
-    //         <th>Ammount</th>
-    //         <th>Status</th>
-    //         <th>Action</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       {data.map((row) => (
-    //         <tr key={row._id}>
-    //           <td>{row.name}</td>
-    //           <td>{row.address}</td>
-    //           <td>{row.suppliers}</td>
-    //           <td>{row.date}</td>
-    //           <td>{row.amount}</td>
-    //           <td>{row.status}</td>
-    //           <td>action</td>
-    //         </tr>
-    //       ))}
-    //     </tbody>
-    //   </table>
-    // </>
     <>
       <div className="border border-borderLight rounded-lg w-[1280px]">
         <div className="bg-greenLight p-5  text-customLg font-semibold text-start w-[1280px]">
@@ -89,8 +60,11 @@ const AllSuppliers = ({ data }) => {
                   </div>
                 </td>
                 <td className="px-5 py-5 border-l">
-                  {" "}
-                  <button className="border border-accent rounded-[30px] px-[17px] py-2 text-accent flex gap-1 text-customMiddle font-medium">
+                  <button
+                    type="button"
+                    onClick={() => handleOpenEditModal(row)}
+                    className="border border-accent rounded-[30px] px-[17px] py-2 text-accent flex gap-1 text-customMiddle font-medium"
+                  >
                     <svg className=" w-[14px] h-[14px] stroke-accent fill-white ">
                       <use xlinkHref={`${IconsSVG}#icon-edit-2`} />
                     </svg>

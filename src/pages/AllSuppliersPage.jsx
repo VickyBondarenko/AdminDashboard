@@ -13,9 +13,13 @@ import {
   getAllSuppliers,
 } from "../redux/suppliers/suppliersThunk";
 
+import EditSuppliersModal from "../components/Suppliers/EditSuppliersModal";
+import AddSupplierModal from "../components/Suppliers/AddSuppliersModal";
+
 const AllSuppliersPage = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [supplierData, setSupplierData] = useState("");
   const [page, setPage] = useState(1);
   const [wordQuery, setWordQuery] = useState("");
   const totalPages = useSelector(selectTotalPages);
@@ -48,6 +52,15 @@ const AllSuppliersPage = () => {
     }
   };
 
+  const handleOpenEditModal = (data) => {
+    setIsEditModalOpen(true);
+    setSupplierData(data);
+  };
+
+  const handleOpenAddModal = () => {
+    setIsAddModalOpen(true);
+  };
+
   return (
     <>
       <div className="px-10 ">
@@ -60,11 +73,25 @@ const AllSuppliersPage = () => {
             onChangePage={setPage}
             onChangeWordQuery={setWordQuery}
           />
-          <AddSuplier />
+          <div onClick={handleOpenAddModal}>
+            <AddSuplier />
+          </div>
         </div>
-
-        <AllSuppliers data={data} />
-
+        <AddSupplierModal
+          isOpen={isAddModalOpen}
+          setIsOpen={setIsAddModalOpen}
+        />
+        <AllSuppliers
+          data={data}
+          handleOpenEditModal={handleOpenEditModal}
+          isOpen={isEditModalOpen}
+          setIsOpen={setIsEditModalOpen}
+        />
+        <EditSuppliersModal
+          isOpen={isEditModalOpen}
+          setIsOpen={setIsEditModalOpen}
+          data={supplierData}
+        />
         {totalPages !== 1 && totalPages && (
           <Pagination
             totalPages={totalPages}

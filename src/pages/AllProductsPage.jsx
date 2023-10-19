@@ -88,12 +88,11 @@ const AllProductsPage = () => {
           <div onClick={handleOpenAddModal}>
             <AddBtn />
           </div>
-
-          <AddProductModal
-            isOpen={isAddModalOpen}
-            setIsOpen={setIsAddModalOpen}
-          />
-        </div>
+        </div>{" "}
+        <AddProductModal
+          isOpen={isAddModalOpen}
+          setIsOpen={setIsAddModalOpen}
+        />
         <AllProducts
           data={data}
           handleDeleteProduct={handleDeleteProduct}
