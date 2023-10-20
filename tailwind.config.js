@@ -12,6 +12,7 @@ export default {
       },
       width: {
         screenMinusScroll: "calc(100vw - 18px)",
+        screenMinusSideBar: "calc(100vw - 100px)",
       },
       backgroundImage: {
         authPage_mob: "url('/src/assets/image/login-s-bg.png')",

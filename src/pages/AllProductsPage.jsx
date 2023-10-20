@@ -76,7 +76,7 @@ const AllProductsPage = () => {
   return (
     <>
       <div className="px-10  ">
-        <div className="flex justify-between items-end">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
           <FilterForm
             page={page}
             limit={"5"}

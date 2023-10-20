@@ -56,7 +56,7 @@ const FilterForm = ({
 
   return (
     <form
-      className="flex flex-row pt-10 md:pt-[50px] xl:pt-[76px] pb-5"
+      className="flex flex-row pt-10 md:pt-[50px] xl:pt-[76px] md:pb-5"
       onSubmit={handleSubmit}
     >
       <ToastContainer />

@@ -17,7 +17,7 @@ export const Pagination = ({ onChangePage, totalPages, currentpage }) => {
   };
 
   return (
-    <div className="flex flex-row gap-4 justify-center pt-5 pb-10">
+    <div className="flex flex-row gap-4 w-[375px] md:w-[789px] xl:w-full justify-center pt-5 pb-10">
       {pages.map((page, index) => (
         <p
           className={`w-3 h-3 rounded-full text-[1px]  ${

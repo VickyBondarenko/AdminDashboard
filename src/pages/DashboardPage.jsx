@@ -18,8 +18,8 @@ const DashboardPage = () => {
   const { statistic, recentCustomers, recentOperations } = data;
   return (
     <>
-      <div className="px-10 pb-10">
-        <div className="  flex flex-wrap justify-between gap-5 pb-10 pt-5 w-[760px]">
+      <div className="px-10 pb-10 ">
+        <div className="  flex flex-wrap justify-between gap-5 pb-10 pt-5 w-[335px] md:w-[710px] xl:w-[760px]">
           <Statistic
             title="All products"
             icon="icon-money-finance"
@@ -36,7 +36,7 @@ const DashboardPage = () => {
             count={statistic.allCustomers}
           />
         </div>
-        <div className="flex flex-row gap-5">
+        <div className="flex flex-col xl:flex-row gap-5 xl:justify-between">
           <RecentCustomers data={recentCustomers} />
           <IncomeExpenses data={recentOperations} />
         </div>
