@@ -19,13 +19,14 @@ import PrivateRoute from "./hooks/PrivateRoute";
 // const AllProductsPage = lazy(() => import("./pages/AllProductsPage"));
 // const AllSuppliersPage = lazy(() => import("./pages/AllSuppliersPage"));
 // const CustomersDataPage = lazy(() => import("./pages/CustomersDataPage"));
-// import PublicRoute from "./hooks/PublicRoute";
+import PublicRoute from "./hooks/PublicRoute";
 import DashboardPage from "./pages/DashboardPage";
 // import LogInPage from "./pages/LogInPage";
 import AllOrdersPage from "./pages/AllOrdersPage";
 import AllProductsPage from "./pages/AllProductsPage";
 import AllSuppliersPage from "./pages/AllSuppliersPage";
 import CustomersDataPage from "./pages/CustomersDataPage";
+import LogInPage from "./pages/LogInPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -37,14 +38,14 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route
+        <Route
           path="/login"
           element={
             <PublicRoute>
               <LogInPage />
             </PublicRoute>
           }
-        /> */}
+        />
 
         <Route
           path="/"
