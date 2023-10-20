@@ -1,12 +1,13 @@
 import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
+import { supplierSchema } from "../../helpers/yupShemas";
 
 import { addSupplier } from "../../redux/suppliers/suppliersThunk";
 
 const AddSupplierForm = () => {
   const dispatch = useDispatch();
 
-  //   const schema = LoginSchema;
+  const schema = supplierSchema;
 
   const statusOptions = ["Active", "Deactive"];
 
@@ -31,7 +32,7 @@ const AddSupplierForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleOnSubmit}
-      //   validationSchema={schema}
+      validationSchema={schema}
     >
       {({
         values,

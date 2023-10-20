@@ -1,11 +1,12 @@
 import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
+import { LoginSchema } from "../../helpers/yupShemas";
 import { loginUser } from "../../redux/auth/authThunk";
 
 const AuthForm = () => {
   const dispatch = useDispatch();
 
-  //   const schema = LoginSchema;
+  const schema = LoginSchema;
 
   const userValues = {
     email: "",
@@ -25,7 +26,7 @@ const AuthForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleOnSubmit}
-      //   validationSchema={schema}
+      validationSchema={schema}
     >
       {({
         values,

@@ -1,11 +1,12 @@
 import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
+import { productSchema } from "../../helpers/yupShemas";
 import { editProduct } from "../../redux/products/productsThunk";
 
 const EditProductForm = ({ data }) => {
   const dispatch = useDispatch();
 
-  //   const schema = LoginSchema;
+  const schema = productSchema;
 
   const categoryOptions = [
     "Medicine",
@@ -44,7 +45,7 @@ const EditProductForm = ({ data }) => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleOnSubmit}
-      //   validationSchema={schema}
+      validationSchema={schema}
     >
       {({
         values,

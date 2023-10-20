@@ -6,7 +6,7 @@ import { editSupplier } from "../../redux/suppliers/suppliersThunk";
 const EditSupplierForm = ({ data }) => {
   const dispatch = useDispatch();
 
-  //   const schema = LoginSchema;
+  const schema = supplierSchema;
 
   const statusOptions = ["Active", "Deactive"];
 
@@ -36,7 +36,7 @@ const EditSupplierForm = ({ data }) => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleOnSubmit}
-      //   validationSchema={schema}
+      validationSchema={schema}
     >
       {({
         values,
