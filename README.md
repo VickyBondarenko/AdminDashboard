@@ -19,3 +19,8 @@ Admin Dashboard is built using the following tools:
 
 - [Website layout](https://www.figma.com/file/z1JklHHxX8kTGo3zWvlzat/Admin-dashboard?type=design&node-id=0-1&mode=design&t=uzJ7bFywCCbAT3sU-0)
 - [Technical task](https://docs.google.com/spreadsheets/d/1ufIlG2HwqppnY1by3HD4l6TVGq4EoW_o8b-ubA-pQq4/edit#gid=0)
+
+## login details
+
+- login: Admin@gmail.com
+- Parol: Asd123456789
