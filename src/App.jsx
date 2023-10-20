@@ -26,6 +26,7 @@ import AllOrdersPage from "./pages/AllOrdersPage";
 import AllProductsPage from "./pages/AllProductsPage";
 import AllSuppliersPage from "./pages/AllSuppliersPage";
 import CustomersDataPage from "./pages/CustomersDataPage";
+import LogPage from "./pages/LogPage";
 // import LoginPage from "./pages/LoginPage";
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
           path="/login"
           element={
             <PublicRoute>
-              <DashboardPage />
+              <LogPage />
             </PublicRoute>
           }
         />
