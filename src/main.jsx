@@ -12,16 +12,10 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "./redux/store";
 import { store } from "./redux/store";
 import { Suspense } from "react";
-import { setAuthHeader } from "./api/apiHelpers";
+
 // import { Loader } from "./components/Preloader/Loader";
 
 Modal.setAppElement("#root");
-
-const token = localStorage.getItem("token");
-
-if (token) {
-  setAuthHeader(token);
-}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>

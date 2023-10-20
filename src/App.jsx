@@ -3,6 +3,7 @@
 // import viteLogo from "/vite.svg";
 import { lazy } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { setAuthHeader } from "./api/apiHelpers";
 import "./App.css";
 
 const LogInPage = lazy(() => import("./pages/LogInPage"));
@@ -18,6 +19,12 @@ const AllSuppliersPage = lazy(() => import("./pages/AllSuppliersPage"));
 const CustomersDataPage = lazy(() => import("./pages/CustomersDataPage"));
 
 function App() {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    setAuthHeader(token);
+  }
+
   return (
     <>
       <Routes>
