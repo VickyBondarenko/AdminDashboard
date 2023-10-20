@@ -21,7 +21,7 @@ import PrivateRoute from "./hooks/PrivateRoute";
 // const CustomersDataPage = lazy(() => import("./pages/CustomersDataPage"));
 import PublicRoute from "./hooks/PublicRoute";
 import DashboardPage from "./pages/DashboardPage";
-import LogInPage from "./pages/LogInPage";
+import LogInPage from "/pages/LogInPage";
 import AllOrdersPage from "./pages/AllOrdersPage";
 import AllProductsPage from "./pages/AllProductsPage";
 import AllSuppliersPage from "./pages/AllSuppliersPage";
