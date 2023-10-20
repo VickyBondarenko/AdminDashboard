@@ -26,7 +26,7 @@ import AllOrdersPage from "./pages/AllOrdersPage";
 import AllProductsPage from "./pages/AllProductsPage";
 import AllSuppliersPage from "./pages/AllSuppliersPage";
 import CustomersDataPage from "./pages/CustomersDataPage";
-import LogInPage from "./pages/LogInPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -42,7 +42,7 @@ function App() {
           path="/login"
           element={
             <PublicRoute>
-              <LogInPage />
+              <LoginPage />
             </PublicRoute>
           }
         />

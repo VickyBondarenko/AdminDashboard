@@ -2,7 +2,7 @@ import Header from "../components/LogIn/Header";
 import AuthForm from "../components/LogIn/Form";
 import Pill from "../assets/image/white-round-pill.png";
 
-const LogInPage = () => {
+const LoginPage = () => {
   return (
     <>
       <div className="px-5 pt-[28px] pb-[234px] md:pb-[276px] xl:pb-[262px] bg-local bg-no-repeat  bg-auto bg-authPage_mob md:bg-authPage_tab bg-right-bottom w-screen">
@@ -29,4 +29,4 @@ const LogInPage = () => {
   );
 };
 
-export default LogInPage;
+export default LoginPage;
