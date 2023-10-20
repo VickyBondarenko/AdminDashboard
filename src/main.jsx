@@ -12,7 +12,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "./redux/store";
 import { store } from "./redux/store";
 import { Suspense } from "react";
-import { setAuthHeader } from "./api/apiHelpers.js";
+import { setAuthHeader } from "./api/apiHelpers";
 // import { Loader } from "./components/Preloader/Loader";
 
 Modal.setAppElement("#root");
