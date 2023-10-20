@@ -36,8 +36,8 @@ const AuthForm = () => {
         isValid,
         dirty,
       }) => (
-        <Form className="flex flex-col gap-[14px] py-10">
-          <label htmlFor="email" className="relative  mb-3 md:mb-6">
+        <Form className="flex flex-col md:w-[323px] pt-10 xl:pt-32">
+          <label htmlFor="email" className="relative  mb-[14px]">
             <Field
               autoComplete="off"
               name="email"
@@ -49,7 +49,7 @@ const AuthForm = () => {
               className="border border-borderLight rounded-[60px] py-[10px] px-[18px] w-full placeholder:text-[12px] placeholder:leading-[18px]"
             />
           </label>
-          <label htmlFor="password" className="relative  mb-7 md:mb-[50px]">
+          <label htmlFor="password" className="relative  mb-10">
             <Field
               autoComplete="off"
               name="password"

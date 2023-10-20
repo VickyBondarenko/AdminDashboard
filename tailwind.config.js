@@ -13,6 +13,16 @@ export default {
       width: {
         screenMinusScroll: "calc(100vw - 18px)",
       },
+      backgroundImage: {
+        authPage_mob: "url('/src/assets/image/login-s-bg.png')",
+        authPage_tab: "url('/src/assets/image/login-m-bg.png')",
+        authPage_desc: "url('/src/assets/AuthPage/auth_back_desktop.png')",
+      },
+      backgroundSize: {
+        auto: "auto",
+        cover: "cover",
+        contain: "contain",
+      },
       colors: {
         accent: "#59B17A",
         mainText: "#1D1E21",
