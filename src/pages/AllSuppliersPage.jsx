@@ -15,6 +15,7 @@ import {
 
 import EditSuppliersModal from "../components/Suppliers/EditSuppliersModal";
 import AddSupplierModal from "../components/Suppliers/AddSuppliersModal";
+import FilterPlug from "../components/FilterPlug";
 
 const AllSuppliersPage = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -37,6 +38,9 @@ const AllSuppliersPage = () => {
 
   const fetchData = (params) => {
     dispatch(fetchSearchedSuppliers(params));
+  };
+  const fetchAlldata = (params) => {
+    dispatch(getAllSuppliers(params));
   };
 
   const onChangePage = (currentPage) => {
@@ -61,13 +65,14 @@ const AllSuppliersPage = () => {
 
   return (
     <>
-      <div className="px-10 ">
+      <div className="px-10 md:w-screen xl:w-[1360px]">
         <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
           <FilterForm
             page={page}
             limit={"5"}
             placeholder={"User Name"}
             fetchData={fetchData}
+            fetchAlldata={fetchAlldata}
             onChangePage={setPage}
             onChangeWordQuery={setWordQuery}
           />
@@ -79,23 +84,29 @@ const AllSuppliersPage = () => {
           isOpen={isAddModalOpen}
           setIsOpen={setIsAddModalOpen}
         />
-        <AllSuppliers
-          data={data}
-          handleOpenEditModal={handleOpenEditModal}
-          isOpen={isEditModalOpen}
-          setIsOpen={setIsEditModalOpen}
-        />
-        <EditSuppliersModal
-          isOpen={isEditModalOpen}
-          setIsOpen={setIsEditModalOpen}
-          data={supplierData}
-        />
-        {totalPages !== 1 && totalPages && (
-          <Pagination
-            totalPages={totalPages}
-            currentpage={page}
-            onChangePage={onChangePage}
-          />
+        {data.length === 0 ? (
+          <FilterPlug />
+        ) : (
+          <>
+            <AllSuppliers
+              data={data}
+              handleOpenEditModal={handleOpenEditModal}
+              isOpen={isEditModalOpen}
+              setIsOpen={setIsEditModalOpen}
+            />
+            <EditSuppliersModal
+              isOpen={isEditModalOpen}
+              setIsOpen={setIsEditModalOpen}
+              data={supplierData}
+            />
+            {totalPages !== 1 && totalPages && (
+              <Pagination
+                totalPages={totalPages}
+                currentpage={page}
+                onChangePage={onChangePage}
+              />
+            )}
+          </>
         )}
       </div>
     </>

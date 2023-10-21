@@ -32,7 +32,7 @@ const AddSupplierModal = ({ isOpen, setIsOpen }) => {
             <h2 className="text-customXxl font-semibold">
               Add a new suppliers
             </h2>
-            <AddSupplierForm />
+            <AddSupplierForm handleCloseModal={handleCloseModal} />
           </div>
         </Modal>
       </div>

@@ -30,7 +30,7 @@ const EditProductModal = ({ isOpen, setIsOpen, data }) => {
               </svg>
             </div>
             <h2 className="text-customXxl font-semibold">Edit product</h2>
-            <EditProductForm data={data} />
+            <EditProductForm data={data} handleCloseModal={handleCloseModal} />
           </div>
         </Modal>
       </div>

@@ -4,7 +4,7 @@ import { supplierSchema } from "../../helpers/yupShemas";
 
 import { addSupplier } from "../../redux/suppliers/suppliersThunk";
 
-const AddSupplierForm = () => {
+const AddSupplierForm = ({ handleCloseModal }) => {
   const dispatch = useDispatch();
 
   const schema = supplierSchema;
@@ -24,8 +24,8 @@ const AddSupplierForm = () => {
 
   const handleOnSubmit = (values, { resetForm }) => {
     dispatch(addSupplier(values));
-
     resetForm();
+    handleCloseModal();
   };
 
   return (
@@ -145,12 +145,15 @@ const AddSupplierForm = () => {
             <button
               disabled={!isValid || !dirty}
               type="submit"
-              className="bg-accent cursor-pointer text-whiteText w-[146px] md:w-[132px] p-[13px] rounded-[60px] font-medium text-[14px] leading-[18px]"
+              className={`bg-accent cursor-pointer text-whiteText w-[146px] md:w-[132px] p-[13px] rounded-[60px] font-medium text-[14px] leading-[18px] ${
+                !isValid || !dirty
+                  ? "opacity-50 cursor-not-allowed"
+                  : "opacity-100 cursor-pointer"
+              }`}
             >
               Add
             </button>
             <button
-              disabled={!isValid || !dirty}
               type="button"
               onClick={resetForm}
               className="bg-borderLight cursor-pointer text-gray-600 w-[146px] md:w-[132px] p-[13px] rounded-[60px] font-medium text-[14px] leading-[18px]"

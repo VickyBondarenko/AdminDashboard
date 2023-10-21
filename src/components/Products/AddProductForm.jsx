@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { productSchema } from "../../helpers/yupShemas";
 import { addProduct } from "../../redux/products/productsThunk";
 
-const AddProductForm = () => {
+const AddProductForm = ({ handleCloseModal }) => {
   const dispatch = useDispatch();
 
   const schema = productSchema;
@@ -33,6 +33,7 @@ const AddProductForm = () => {
   const handleOnSubmit = (values, { resetForm }) => {
     dispatch(addProduct(values));
     resetForm();
+    handleCloseModal();
   };
 
   return (
@@ -138,14 +139,17 @@ const AddProductForm = () => {
             <button
               disabled={!isValid || !dirty}
               type="submit"
-              className="bg-accent cursor-pointer text-whiteText w-[146px] md:w-[132px] p-[13px] rounded-[60px] font-medium text-[14px] leading-[18px]"
+              className={`bg-accent cursor-pointer text-whiteText w-[146px] md:w-[132px] p-[13px] rounded-[60px] font-medium text-[14px] leading-[18px] ${
+                !isValid || !dirty
+                  ? "opacity-50 cursor-not-allowed"
+                  : "opacity-100 cursor-pointer"
+              }`}
             >
               Add
             </button>
             <button
-              disabled={!isValid || !dirty}
               type="button"
-              onClick={resetForm}
+              onClick={() => resetForm()}
               className="bg-borderLight cursor-pointer text-gray-600 w-[146px] md:w-[132px] p-[13px] rounded-[60px] font-medium text-[14px] leading-[18px]"
             >
               Cancel

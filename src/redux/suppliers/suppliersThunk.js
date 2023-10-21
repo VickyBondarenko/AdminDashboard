@@ -39,7 +39,12 @@ export const addSupplier = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const response = await axios.post("/api/suppliers", formData);
-      return response;
+      if (response.status === 201) {
+        toast.success("Supplier add successfully!", {});
+        return response;
+      } else {
+        return;
+      }
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -54,7 +59,12 @@ export const editSupplier = createAsyncThunk(
         `/api/suppliers/${supplierId}`,
         formData
       );
-      return response.data;
+      if (response.status === 200) {
+        toast.success("Supplier edit successfully!", {});
+        return response.data;
+      } else {
+        return;
+      }
     } catch (error) {
       if (error.response.data.message === "Provide all necessary fields") {
         toast.warn("Provide all filds!", {});

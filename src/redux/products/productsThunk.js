@@ -64,7 +64,12 @@ export const addProduct = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const response = await axios.post("/api/products", formData);
-      return response;
+      if (response.status === 201) {
+        toast.success("Product add successfully!", {});
+        return response;
+      } else {
+        return;
+      }
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -76,7 +81,12 @@ export const editProduct = createAsyncThunk(
   async ({ productId, formData }, { rejectWithValue }) => {
     try {
       const response = await axios.put(`/api/products/${productId}`, formData);
-      return response.data;
+      if (response.status === 200) {
+        toast.success("Product edit successfully!", {});
+        return response.data;
+      } else {
+        return;
+      }
     } catch (error) {
       if (error.response.data.message === "Provide all necessary fields") {
         toast.warn("Provide all filds!", {});

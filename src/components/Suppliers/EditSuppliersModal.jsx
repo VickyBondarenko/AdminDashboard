@@ -31,7 +31,7 @@ const EditSuppliersModal = ({ isOpen, setIsOpen, data }) => {
               </svg>
             </div>
             <h2 className="text-customXxl font-semibold">Edit supplier</h2>
-            <EditSupplierForm data={data} />
+            <EditSupplierForm data={data} handleCloseModal={handleCloseModal} />
           </div>
         </Modal>
       </div>

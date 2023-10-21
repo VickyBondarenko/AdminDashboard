@@ -75,7 +75,9 @@ const AllOrders = ({ data }) => {
               >
                 <td className=" py-5 flex flex-row gap-2 items-center">
                   <img
-                    src={row.photo}
+                    src={
+                      row.photo ? row.photo : `https://i.imgur.com/1As0akH.png1`
+                    }
                     alt={row.name}
                     className="w-[36px] h-[36px] rounded-full"
                   />

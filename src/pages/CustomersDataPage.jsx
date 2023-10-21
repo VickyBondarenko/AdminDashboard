@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AllCustomers from "../components/Customers/AllCustomers";
 import FilterForm from "../components/FilterForm";
+import FilterPlug from "../components/FilterPlug";
 import { Pagination } from "../components/Pagination/Pagination";
 import {
   selectCustomers,
@@ -31,6 +32,9 @@ const CustomersDataPage = () => {
   const fetchData = (params) => {
     dispatch(fetchSearchedCustomers(params));
   };
+  const fetchAlldata = (params) => {
+    dispatch(getAllCustomers(params));
+  };
 
   const onChangePage = (currentPage) => {
     const number = Number(currentPage);
@@ -51,17 +55,24 @@ const CustomersDataPage = () => {
           limit={"5"}
           placeholder={"User Name"}
           fetchData={fetchData}
+          fetchAlldata={fetchAlldata}
           onChangePage={setPage}
           onChangeWordQuery={setWordQuery}
         />
-        <AllCustomers data={data} />
+        {data.length === 0 ? (
+          <FilterPlug />
+        ) : (
+          <>
+            <AllCustomers data={data} />
 
-        {totalPages !== 1 && totalPages && (
-          <Pagination
-            totalPages={totalPages}
-            currentpage={page}
-            onChangePage={onChangePage}
-          />
+            {totalPages !== 1 && totalPages && (
+              <Pagination
+                totalPages={totalPages}
+                currentpage={page}
+                onChangePage={onChangePage}
+              />
+            )}
+          </>
         )}
       </div>
     </>

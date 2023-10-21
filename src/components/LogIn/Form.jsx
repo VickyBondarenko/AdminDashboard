@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { LoginSchema } from "../../helpers/yupShemas";
 import { loginUser } from "../../redux/auth/authThunk";
@@ -28,8 +28,8 @@ const AuthForm = () => {
     >
       {({
         values,
-        // errors,
-        // touched,
+        errors,
+        touched,
         handleChange,
         handleBlur,
         isValid,
@@ -47,6 +47,11 @@ const AuthForm = () => {
               value={values.email}
               className="border border-borderLight rounded-[60px] py-[10px] px-[18px] w-full placeholder:text-[12px] placeholder:leading-[18px]"
             />
+            {touched.email && errors.email && (
+              <div className="pl-4 text-red-500 text-customXxs absolute">
+                {errors.email}
+              </div>
+            )}
           </label>
           <label htmlFor="password" className="relative  mb-10">
             <Field
@@ -59,11 +64,20 @@ const AuthForm = () => {
               value={values.password}
               className="border border-borderLight rounded-[60px] py-[10px] px-[18px] w-full placeholder:text-[12px] placeholder:leading-[18px]"
             />
+            {touched.password && errors.password && (
+              <div className="pl-4 text-red-500 text-customXxs absolute">
+                {errors.password}
+              </div>
+            )}
           </label>
           <button
             disabled={!isValid || !dirty}
             type="submit"
-            className="bg-accent text-whiteText w-full p-[13px] rounded-[60px] font-medium text-[14px] leading-[18px]"
+            className={`bg-accent text-whiteText w-full p-[13px] rounded-[60px] font-medium text-[14px] leading-[18px] ${
+              !isValid || !dirty
+                ? "opacity-50 cursor-not-allowed"
+                : "opacity-100 cursor-pointer"
+            }`}
           >
             Log in
           </button>

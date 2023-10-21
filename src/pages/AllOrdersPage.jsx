@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FilterForm from "../components/FilterForm";
+import FilterPlug from "../components/FilterPlug";
 import AllOrders from "../components/Orders/AllOrders";
 import { Pagination } from "../components/Pagination/Pagination";
 import { selectOrders, selectTotalPages } from "../redux/orders/ordersSelector";
@@ -25,6 +26,9 @@ const AllOrdersPage = () => {
   const fetchData = (params) => {
     dispatch(fetchSearchedOrders(params));
   };
+  const fetchAlldata = (params) => {
+    dispatch(getAllOrders(params));
+  };
 
   const onChangePage = (currentPage) => {
     const number = Number(currentPage);
@@ -45,18 +49,24 @@ const AllOrdersPage = () => {
           limit={"5"}
           placeholder={"User Name"}
           fetchData={fetchData}
+          fetchAlldata={fetchAlldata}
           onChangePage={setPage}
           onChangeWordQuery={setWordQuery}
         />
+        {data.length === 0 ? (
+          <FilterPlug />
+        ) : (
+          <>
+            <AllOrders data={data} />
 
-        <AllOrders data={data} />
-
-        {totalPages !== 1 && totalPages && (
-          <Pagination
-            totalPages={totalPages}
-            currentpage={page}
-            onChangePage={onChangePage}
-          />
+            {totalPages !== 1 && totalPages && (
+              <Pagination
+                totalPages={totalPages}
+                currentpage={page}
+                onChangePage={onChangePage}
+              />
+            )}
+          </>
         )}
       </div>
     </>

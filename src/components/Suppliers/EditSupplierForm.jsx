@@ -4,7 +4,7 @@ import { supplierSchema } from "../../helpers/yupShemas";
 
 import { editSupplier } from "../../redux/suppliers/suppliersThunk";
 
-const EditSupplierForm = ({ data }) => {
+const EditSupplierForm = ({ data, handleCloseModal }) => {
   const dispatch = useDispatch();
 
   const schema = supplierSchema;
@@ -30,6 +30,7 @@ const EditSupplierForm = ({ data }) => {
     };
     dispatch(editSupplier(requst));
     resetForm();
+    handleCloseModal();
   };
 
   return (
@@ -154,7 +155,6 @@ const EditSupplierForm = ({ data }) => {
               Save
             </button>
             <button
-              disabled={!isValid || !dirty}
               type="button"
               onClick={resetForm}
               className="bg-borderLight cursor-pointer text-gray-600 w-[146px] md:w-[132px] p-[13px] rounded-[60px] font-medium text-[14px] leading-[18px]"

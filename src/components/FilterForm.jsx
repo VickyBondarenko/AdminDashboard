@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import IconsSVG from "../assets/svg/symbol-defs.svg";
 
-import { selectOrders } from "../redux/orders/ordersSelector";
+import IconsSVG from "../assets/svg/symbol-defs.svg";
 
 const FilterForm = ({
   placeholder,
   page,
   limit,
   fetchData,
+  fetchAlldata,
   onChangePage,
   onChangeWordQuery,
 }) => {
@@ -22,12 +20,12 @@ const FilterForm = ({
     page,
     limit,
   };
-  // const data = useSelector(selectOrders);
 
   useEffect(() => {
     if (wordQuery === "") {
       return;
     }
+
     if (!wordQuery == "") {
       fetchData(params);
     }
@@ -40,13 +38,12 @@ const FilterForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (wordQuery.trim() === "") {
-      toast.warn("Enter your query");
-      return;
-    }
     onChangePage(1);
-    fetchSearchData();
+    if (wordQuery === "") {
+      fetchAlldata({ page: 1, limit });
+    } else {
+      fetchSearchData();
+    }
   };
 
   const handleInputChange = (e) => {
