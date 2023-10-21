@@ -4,7 +4,7 @@ import { supplierSchema } from "../../helpers/yupShemas";
 
 import { editSupplier } from "../../redux/suppliers/suppliersThunk";
 
-const EditSupplierForm = ({ data, handleCloseModal }) => {
+const EditSupplierForm = ({ data, handleCloseModal, fetchAlldata }) => {
   const dispatch = useDispatch();
 
   const schema = supplierSchema;
@@ -30,6 +30,7 @@ const EditSupplierForm = ({ data, handleCloseModal }) => {
     };
     dispatch(editSupplier(requst));
     resetForm();
+    fetchAlldata();
     handleCloseModal();
   };
 

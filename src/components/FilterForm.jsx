@@ -40,7 +40,7 @@ const FilterForm = ({
     e.preventDefault();
     onChangePage(1);
     if (wordQuery === "") {
-      fetchAlldata({ page: 1, limit });
+      fetchAlldata();
     } else {
       fetchSearchData();
     }

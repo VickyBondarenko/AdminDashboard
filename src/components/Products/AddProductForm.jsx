@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { productSchema } from "../../helpers/yupShemas";
 import { addProduct } from "../../redux/products/productsThunk";
 
-const AddProductForm = ({ handleCloseModal }) => {
+const AddProductForm = ({ handleCloseModal, fetchAlldata }) => {
   const dispatch = useDispatch();
 
   const schema = productSchema;
@@ -33,6 +33,7 @@ const AddProductForm = ({ handleCloseModal }) => {
   const handleOnSubmit = (values, { resetForm }) => {
     dispatch(addProduct(values));
     resetForm();
+    fetchAlldata();
     handleCloseModal();
   };
 

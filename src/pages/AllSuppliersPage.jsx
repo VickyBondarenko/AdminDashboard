@@ -39,8 +39,8 @@ const AllSuppliersPage = () => {
   const fetchData = (params) => {
     dispatch(fetchSearchedSuppliers(params));
   };
-  const fetchAlldata = (params) => {
-    dispatch(getAllSuppliers(params));
+  const fetchAlldata = () => {
+    dispatch(getAllSuppliers({ page, limit }));
   };
 
   const onChangePage = (currentPage) => {
@@ -83,6 +83,7 @@ const AllSuppliersPage = () => {
         <AddSupplierModal
           isOpen={isAddModalOpen}
           setIsOpen={setIsAddModalOpen}
+          fetchAlldata={fetchAlldata}
         />
         {data.length === 0 ? (
           <FilterPlug />
@@ -98,6 +99,7 @@ const AllSuppliersPage = () => {
               isOpen={isEditModalOpen}
               setIsOpen={setIsEditModalOpen}
               data={supplierData}
+              fetchAlldata={fetchAlldata}
             />
             {totalPages !== 1 && totalPages && (
               <Pagination

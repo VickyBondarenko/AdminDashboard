@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import IconsSVG from "../../assets/svg/symbol-defs.svg";
 import AddProductForm from "./AddProductForm";
 
-const AddProductModal = ({ isOpen, setIsOpen }) => {
+const AddProductModal = ({ isOpen, setIsOpen, fetchAlldata }) => {
   const handleCloseModal = () => {
     setIsOpen(false);
     document.body.classList.remove("overflow-hidden");
@@ -30,7 +30,10 @@ const AddProductModal = ({ isOpen, setIsOpen }) => {
               </svg>
             </div>
             <h2 className="text-customXxl font-semibold">Add a new product</h2>
-            <AddProductForm handleCloseModal={handleCloseModal} />
+            <AddProductForm
+              handleCloseModal={handleCloseModal}
+              fetchAlldata={fetchAlldata}
+            />
           </div>
         </Modal>
       </div>

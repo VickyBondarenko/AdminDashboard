@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import IconsSVG from "../../assets/svg/symbol-defs.svg";
 import AddSupplierForm from "./AddSupplierForm";
 
-const AddSupplierModal = ({ isOpen, setIsOpen }) => {
+const AddSupplierModal = ({ isOpen, setIsOpen, fetchAlldata }) => {
   const handleCloseModal = () => {
     setIsOpen(false);
     document.body.classList.remove("overflow-hidden");
@@ -32,7 +32,10 @@ const AddSupplierModal = ({ isOpen, setIsOpen }) => {
             <h2 className="text-customXxl font-semibold">
               Add a new suppliers
             </h2>
-            <AddSupplierForm handleCloseModal={handleCloseModal} />
+            <AddSupplierForm
+              handleCloseModal={handleCloseModal}
+              fetchAlldata={fetchAlldata}
+            />
           </div>
         </Modal>
       </div>

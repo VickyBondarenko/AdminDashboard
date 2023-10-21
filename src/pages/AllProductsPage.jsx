@@ -40,8 +40,8 @@ const AllProductsPage = () => {
   const fetchData = (params) => {
     dispatch(fetchSearchedProducts(params));
   };
-  const fetchAlldata = (params) => {
-    dispatch(getAllProducts(params));
+  const fetchAlldata = () => {
+    dispatch(getAllProducts({ page, limit }));
   };
 
   const onChangePage = (currentPage) => {
@@ -96,6 +96,7 @@ const AllProductsPage = () => {
         <AddProductModal
           isOpen={isAddModalOpen}
           setIsOpen={setIsAddModalOpen}
+          fetchAlldata={fetchAlldata}
         />
         {data.length === 0 ? (
           <FilterPlug />
@@ -112,6 +113,7 @@ const AllProductsPage = () => {
               isOpen={isEditModalOpen}
               setIsOpen={setIsEditModalOpen}
               data={productData}
+              fetchAlldata={fetchAlldata}
             />
             {totalPages !== 1 && totalPages && totalPages !== 0 && (
               <Pagination

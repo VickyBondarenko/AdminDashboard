@@ -4,7 +4,7 @@ import { supplierSchema } from "../../helpers/yupShemas";
 
 import { addSupplier } from "../../redux/suppliers/suppliersThunk";
 
-const AddSupplierForm = ({ handleCloseModal }) => {
+const AddSupplierForm = ({ handleCloseModal, fetchAlldata }) => {
   const dispatch = useDispatch();
 
   const schema = supplierSchema;
@@ -25,6 +25,7 @@ const AddSupplierForm = ({ handleCloseModal }) => {
   const handleOnSubmit = (values, { resetForm }) => {
     dispatch(addSupplier(values));
     resetForm();
+    fetchAlldata();
     handleCloseModal();
   };
 

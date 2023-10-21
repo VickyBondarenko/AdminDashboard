@@ -4,7 +4,7 @@ import IconsSVG from "../../assets/svg/symbol-defs.svg";
 
 import EditSupplierForm from "./EditSupplierForm";
 
-const EditSuppliersModal = ({ isOpen, setIsOpen, data }) => {
+const EditSuppliersModal = ({ isOpen, setIsOpen, data, fetchAlldata }) => {
   const handleCloseModal = () => {
     setIsOpen(false);
     document.body.classList.remove("overflow-hidden");
@@ -31,7 +31,11 @@ const EditSuppliersModal = ({ isOpen, setIsOpen, data }) => {
               </svg>
             </div>
             <h2 className="text-customXxl font-semibold">Edit supplier</h2>
-            <EditSupplierForm data={data} handleCloseModal={handleCloseModal} />
+            <EditSupplierForm
+              data={data}
+              handleCloseModal={handleCloseModal}
+              fetchAlldata={fetchAlldata}
+            />
           </div>
         </Modal>
       </div>
