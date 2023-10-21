@@ -24,7 +24,7 @@ const AddSupplierForm = () => {
 
   const handleOnSubmit = (values, { resetForm }) => {
     dispatch(addSupplier(values));
-    console.log("values", values);
+
     resetForm();
   };
 

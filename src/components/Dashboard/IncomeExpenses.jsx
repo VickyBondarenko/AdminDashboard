@@ -40,7 +40,6 @@ const IncomeExpenses = ({ data }) => {
                 >
                   {row.amount}
                 </td>
-                {/* <td className="px-5 py-5 ">{!row.country && "Ukraine"}</td> */}
               </tr>
             ))}
           </tbody>

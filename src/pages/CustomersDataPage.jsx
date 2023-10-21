@@ -13,18 +13,6 @@ import {
 } from "../redux/customers/customersThunk";
 
 const CustomersDataPage = () => {
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getAllCustomers());
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
-  // const data = useSelector(selectCustomers);
-
-  // const fetchData = (params) => {
-  //   dispatch(fetchSearchedCustomers(params));
-  // };
   const [page, setPage] = useState(1);
   const [wordQuery, setWordQuery] = useState("");
   const totalPages = useSelector(selectTotalPages);
@@ -45,16 +33,14 @@ const CustomersDataPage = () => {
   };
 
   const onChangePage = (currentPage) => {
-    if (currentPage !== "...") {
-      const number = Number(currentPage);
+    const number = Number(currentPage);
 
-      const element = document.getElementById("ahcnor1");
-      if (element) {
-        element.scrollIntoView({ block: "start", behavior: "smooth" });
-      }
-
-      setPage(number);
+    const element = document.getElementById("ahcnor1");
+    if (element) {
+      element.scrollIntoView({ block: "start", behavior: "smooth" });
     }
+
+    setPage(number);
   };
 
   return (

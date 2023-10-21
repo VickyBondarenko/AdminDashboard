@@ -22,7 +22,6 @@ import productsReducer from "./products/productsSlice";
 const authPersistConfig = {
   key: "auth",
   storage,
-  // whitelist: ["token"],
 };
 
 const middleware = [

@@ -29,7 +29,6 @@ const EditSupplierForm = ({ data }) => {
       formData: values,
     };
     dispatch(editSupplier(requst));
-    console.log("values", values);
     resetForm();
   };
 

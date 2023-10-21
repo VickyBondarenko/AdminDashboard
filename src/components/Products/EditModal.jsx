@@ -8,7 +8,6 @@ const EditProductModal = ({ isOpen, setIsOpen, data }) => {
     setIsOpen(false);
     document.body.classList.remove("overflow-hidden");
   };
-  console.log("data", data);
 
   return (
     <>

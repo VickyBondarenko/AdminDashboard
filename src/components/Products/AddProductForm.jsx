@@ -32,7 +32,6 @@ const AddProductForm = () => {
 
   const handleOnSubmit = (values, { resetForm }) => {
     dispatch(addProduct(values));
-    console.log("values", values);
     resetForm();
   };
 

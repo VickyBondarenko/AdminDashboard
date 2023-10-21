@@ -17,8 +17,6 @@ const AuthForm = () => {
 
   const handleOnSubmit = (values, { resetForm }) => {
     dispatch(loginUser(values));
-    console.log("values", values);
-
     resetForm();
   };
 

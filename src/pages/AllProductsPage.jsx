@@ -68,8 +68,6 @@ const AllProductsPage = () => {
   };
 
   const handleOpenAddModal = () => {
-    console.log("isAddModalOpen", isAddModalOpen);
-
     setIsAddModalOpen(true);
   };
 

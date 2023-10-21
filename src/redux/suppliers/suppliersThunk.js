@@ -39,7 +39,6 @@ export const addSupplier = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const response = await axios.post("/api/suppliers", formData);
-      console.log("response", response);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -57,9 +56,9 @@ export const editSupplier = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      // if (error.response.data.message === "Provide all necessary fields") {
-      //   toast.warn("Provide all filds!", {});
-      // }
+      if (error.response.data.message === "Provide all necessary fields") {
+        toast.warn("Provide all filds!", {});
+      }
       return rejectWithValue(error.message);
     }
   }

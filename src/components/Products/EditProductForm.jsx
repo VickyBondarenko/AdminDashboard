@@ -37,7 +37,6 @@ const EditProductForm = ({ data }) => {
       formData: values,
     };
     dispatch(editProduct(requst));
-    console.log("values", values);
     resetForm();
   };
 

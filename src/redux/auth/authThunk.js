@@ -16,7 +16,6 @@ export const loginUser = createAsyncThunk(
       } = await axios.post(`/api/user/login`, userData);
       setAuthHeader(token);
       localStorage.setItem("token", token);
-      // localStorage.setItem("user", user);
       return { user, token };
     } catch (error) {
       Notify.failure("Incorect email or password");
@@ -67,6 +66,7 @@ export const logoutUser = createAsyncThunk(
       clearAuthHeader();
       return data;
     } catch (error) {
+      clearAuthHeader();
       return rejectWithValue(error.message);
     }
   }

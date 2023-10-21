@@ -40,16 +40,14 @@ const AllSuppliersPage = () => {
   };
 
   const onChangePage = (currentPage) => {
-    if (currentPage !== "...") {
-      const number = Number(currentPage);
+    const number = Number(currentPage);
 
-      const element = document.getElementById("ahcnor1");
-      if (element) {
-        element.scrollIntoView({ block: "start", behavior: "smooth" });
-      }
-
-      setPage(number);
+    const element = document.getElementById("ahcnor1");
+    if (element) {
+      element.scrollIntoView({ block: "start", behavior: "smooth" });
     }
+
+    setPage(number);
   };
 
   const handleOpenEditModal = (data) => {
