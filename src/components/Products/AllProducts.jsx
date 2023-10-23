@@ -11,7 +11,7 @@ const AllProducts = ({
   return (
     <>
       <div className="border border-borderLight rounded-lg w-[1280px]">
-        <div className="bg-greenLight p-5  text-customLg font-semibold rounded-lg  text-start w-[1278px]">
+        <div className="bg-greenLight p-5  text-customLg font-semibold rounded-t-lg  text-start w-[1278px]">
           All Products
         </div>
         <table className="ml-5">

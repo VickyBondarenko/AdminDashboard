@@ -2,7 +2,7 @@ const RecentCustomers = ({ data }) => {
   return (
     <>
       <div className="border border-borderLight rounded-lg  md:w-[704px] xl:w-[630px] overflow-x-scroll md:overflow-visible">
-        <div className="bg-greenLight p-5  text-customLg  rounded-lg  font-semibold w-[437px] md:w-[702px] xl:w-[628px]">
+        <div className="bg-greenLight p-5  text-customLg  rounded-t-lg font-semibold w-[437px] md:w-[702px] xl:w-[628px]">
           Recent Customers
         </div>
         <table className="ml-5">
