@@ -4,7 +4,7 @@ const AllSuppliers = ({ data, handleOpenEditModal, isOpen, setIsOpen }) => {
   return (
     <>
       <div className="border border-borderLight rounded-lg w-[1280px]">
-        <div className="bg-greenLight p-5  text-customLg font-semibold text-start w-[1280px]">
+        <div className="bg-greenLight p-5  text-customLg font-semibold rounded-lg text-start w-[1278px]">
           All Suppliers
         </div>
         <table className="ml-5">

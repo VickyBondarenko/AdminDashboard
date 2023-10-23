@@ -40,7 +40,7 @@ const AllOrders = ({ data }) => {
   return (
     <>
       <div className="border border-borderLight rounded-lg w-[1280px]">
-        <div className="bg-greenLight p-5  text-customLg font-semibold text-start w-[1280px]">
+        <div className="bg-greenLight p-5  text-customLg font-semibold rounded-lg text-start w-[1278px]">
           All Orders
         </div>
         <table className="ml-5">

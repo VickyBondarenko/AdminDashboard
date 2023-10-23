@@ -2,7 +2,7 @@ const IncomeExpenses = ({ data }) => {
   return (
     <>
       <div className="border border-borderLight rounded-lg w-[335px]  md:w-[704px] xl:w-[630px]">
-        <div className="bg-greenLight p-5  text-customLg font-semibold text-start w-[335px] md:w-[704px] xl:w-[630px]">
+        <div className="bg-greenLight p-5  text-customLg rounded-lg font-semibold text-start w-[333px] md:w-[702px] xl:w-[628px]">
           Income/Expenses
         </div>
         <table className="ml-4">
