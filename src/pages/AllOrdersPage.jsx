@@ -26,8 +26,8 @@ const AllOrdersPage = () => {
   const fetchData = (params) => {
     dispatch(fetchSearchedOrders(params));
   };
-  const fetchAlldata = (params) => {
-    dispatch(getAllOrders(params));
+  const fetchAlldata = () => {
+    dispatch(getAllOrders({ page, limit }));
   };
 
   const onChangePage = (currentPage) => {
