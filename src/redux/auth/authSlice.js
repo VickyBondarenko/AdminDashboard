@@ -36,6 +36,9 @@ const authSlice = createSlice({
         };
         state.token = null;
       })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.token = null;
+      })
       .addCase(getCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
       })

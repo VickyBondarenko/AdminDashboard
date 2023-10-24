@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FilterForm from "../components/FilterForm";
 import FilterPlug from "../components/FilterPlug";
+import { Loader } from "../components/Loader";
 import { Pagination } from "../components/Pagination/Pagination";
 import { AddBtn } from "../components/Products/AddBtn";
 import AddProductModal from "../components/Products/AddModal";
 import AllProducts from "../components/Products/AllProducts";
 import EditProductModal from "../components/Products/EditModal";
+import { getIsRefreshing } from "../redux/auth/authSelector";
 import {
   selectProducts,
   selectTotalPages,
@@ -36,6 +38,8 @@ const AllProductsPage = () => {
   }, [page, limit]);
 
   const data = useSelector(selectProducts);
+  const isLoading = useSelector(getIsRefreshing);
+  console.log("isLoading", isLoading);
 
   const fetchData = (params) => {
     dispatch(fetchSearchedProducts(params));
@@ -78,53 +82,57 @@ const AllProductsPage = () => {
 
   return (
     <>
-      <div className="px-10  md:w-screen xl:w-[1360px]">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
-          <FilterForm
-            page={page}
-            limit={"5"}
-            placeholder={"Product Name"}
-            fetchData={fetchData}
-            fetchAlldata={fetchAlldata}
-            onChangePage={setPage}
-            onChangeWordQuery={setWordQuery}
-          />
-          <div onClick={handleOpenAddModal}>
-            <AddBtn />
-          </div>
-        </div>
-        <AddProductModal
-          isOpen={isAddModalOpen}
-          setIsOpen={setIsAddModalOpen}
-          fetchAlldata={fetchAlldata}
-        />
-        {data.length === 0 ? (
-          <FilterPlug />
-        ) : (
-          <>
-            <AllProducts
-              data={data}
-              handleDeleteProduct={handleDeleteProduct}
-              handleOpenEditModal={handleOpenEditModal}
-              isOpen={isEditModalOpen}
-              setIsOpen={setIsEditModalOpen}
-            />
-            <EditProductModal
-              isOpen={isEditModalOpen}
-              setIsOpen={setIsEditModalOpen}
-              data={productData}
+      {isLoading && <Loader />}
+
+      {!isLoading && (
+        <div className="px-10  md:w-screen xl:w-[1360px]">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+            <FilterForm
+              page={page}
+              limit={"5"}
+              placeholder={"Product Name"}
+              fetchData={fetchData}
               fetchAlldata={fetchAlldata}
+              onChangePage={setPage}
+              onChangeWordQuery={setWordQuery}
             />
-            {totalPages !== 1 && totalPages && totalPages !== 0 && (
-              <Pagination
-                totalPages={totalPages}
-                currentpage={page}
-                onChangePage={onChangePage}
+            <div onClick={handleOpenAddModal}>
+              <AddBtn />
+            </div>
+          </div>
+          <AddProductModal
+            isOpen={isAddModalOpen}
+            setIsOpen={setIsAddModalOpen}
+            fetchAlldata={fetchAlldata}
+          />
+          {data.length === 0 ? (
+            <FilterPlug />
+          ) : (
+            <>
+              <AllProducts
+                data={data}
+                handleDeleteProduct={handleDeleteProduct}
+                handleOpenEditModal={handleOpenEditModal}
+                isOpen={isEditModalOpen}
+                setIsOpen={setIsEditModalOpen}
               />
-            )}
-          </>
-        )}
-      </div>
+              <EditProductModal
+                isOpen={isEditModalOpen}
+                setIsOpen={setIsEditModalOpen}
+                data={productData}
+                fetchAlldata={fetchAlldata}
+              />
+              {totalPages !== 1 && totalPages && totalPages !== 0 && (
+                <Pagination
+                  totalPages={totalPages}
+                  currentpage={page}
+                  onChangePage={onChangePage}
+                />
+              )}
+            </>
+          )}
+        </div>
+      )}
     </>
   );
 };
