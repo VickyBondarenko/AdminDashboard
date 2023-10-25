@@ -11,12 +11,13 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "./redux/store";
 import { store } from "./redux/store";
 import { Suspense } from "react";
+import { Loader } from "./components/Loader.jsx";
 
 Modal.setAppElement("#root");
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
+    <PersistGate loading={<Loader />} persistor={persistor}>
       <Suspense fallback={null}>
         <BrowserRouter>
           <App />

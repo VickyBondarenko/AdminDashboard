@@ -8,7 +8,7 @@ import { AddBtn } from "../components/Products/AddBtn";
 import AddProductModal from "../components/Products/AddModal";
 import AllProducts from "../components/Products/AllProducts";
 import EditProductModal from "../components/Products/EditModal";
-import { getIsRefreshing } from "../redux/auth/authSelector";
+import { getIsLoading } from "../redux/auth/authSelector";
 import {
   selectProducts,
   selectTotalPages,
@@ -38,7 +38,7 @@ const AllProductsPage = () => {
   }, [page, limit]);
 
   const data = useSelector(selectProducts);
-  const isLoading = useSelector(getIsRefreshing);
+  const isLoading = useSelector(getIsLoading);
   console.log("isLoading", isLoading);
 
   const fetchData = (params) => {
@@ -82,7 +82,11 @@ const AllProductsPage = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
+      {isLoading && (
+        <div className="w-screenMinusSideBar h-screenMinusHeader flex justify-center items-center">
+          <Loader />
+        </div>
+      )}
 
       {!isLoading && (
         <div className="px-10  md:w-screen xl:w-[1360px]">

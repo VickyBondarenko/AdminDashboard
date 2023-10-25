@@ -8,3 +8,4 @@ export const selectUserId = (state) => {
 };
 export const getToken = (state) => state.auth.token;
 export const getIsRefreshing = (state) => state.auth.isRefreshing;
+export const getIsLoading = (state) => state.auth.isLoading;

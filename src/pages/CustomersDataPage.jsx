@@ -32,8 +32,8 @@ const CustomersDataPage = () => {
   const fetchData = (params) => {
     dispatch(fetchSearchedCustomers(params));
   };
-  const fetchAlldata = (params) => {
-    dispatch(getAllCustomers(params));
+  const fetchAlldata = () => {
+    dispatch(getAllCustomers({ page, limit }));
   };
 
   const onChangePage = (currentPage) => {

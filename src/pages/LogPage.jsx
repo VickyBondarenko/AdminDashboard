@@ -1,16 +1,16 @@
 import AuthForm from "../components/LogIn/Form";
 import Header from "../components/LogIn/Header";
 import Pill from "../assets/image/white-round-pill.png";
-import { getIsRefreshing } from "../redux/auth/authSelector";
+import { getIsLoading } from "../redux/auth/authSelector";
 import { Loader } from "../components/Loader";
 import { useSelector } from "react-redux";
 
 const LogPage = () => {
-  const isRefreshing = useSelector(getIsRefreshing);
+  const isLoading = useSelector(getIsLoading);
   return (
     <>
-      {isRefreshing && <Loader />}
-      {!isRefreshing && (
+      {isLoading && <Loader />}
+      {!isLoading && (
         <div className="px-5 pt-[28px] pb-[234px] md:pb-[276px] xl:pb-[262px] bg-local bg-no-repeat  bg-auto bg-authPage_mob md:bg-authPage_tab bg-right-bottom w-screen">
           <Header />
           <div className="xl:flex xl:justify-around xl:items-center ">
