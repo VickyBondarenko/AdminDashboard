@@ -5,6 +5,7 @@ import { Pagination } from "../components/Pagination/Pagination";
 import { AddSuplier } from "../components/Suppliers/AddSupplier";
 import AllSuppliers from "../components/Suppliers/AllSuppliers";
 import {
+  getIsLoading,
   selectSuppliers,
   selectTotalPages,
 } from "../redux/suppliers/suppliersSelector";
@@ -16,6 +17,7 @@ import {
 import EditSuppliersModal from "../components/Suppliers/EditSuppliersModal";
 import AddSupplierModal from "../components/Suppliers/AddSuppliersModal";
 import FilterPlug from "../components/FilterPlug";
+import { Loader } from "../components/Loader";
 
 const AllSuppliersPage = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -35,6 +37,7 @@ const AllSuppliersPage = () => {
   }, [page, limit]);
 
   const data = useSelector(selectSuppliers);
+  const isLoading = useSelector(getIsLoading);
 
   const fetchData = (params) => {
     dispatch(fetchSearchedSuppliers(params));
@@ -65,52 +68,60 @@ const AllSuppliersPage = () => {
 
   return (
     <>
-      <div className="px-10 md:w-screen xl:w-[1360px]">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
-          <FilterForm
-            page={page}
-            limit={"5"}
-            placeholder={"User Name"}
-            fetchData={fetchData}
-            fetchAlldata={fetchAlldata}
-            onChangePage={setPage}
-            onChangeWordQuery={setWordQuery}
-          />
-          <div onClick={handleOpenAddModal}>
-            <AddSuplier />
-          </div>
+      {isLoading && (
+        <div className="w-screenMinusSideBar h-screenMinusHeader flex justify-center items-center">
+          <Loader />
         </div>
-        <AddSupplierModal
-          isOpen={isAddModalOpen}
-          setIsOpen={setIsAddModalOpen}
-          fetchAlldata={fetchAlldata}
-        />
-        {data.length === 0 ? (
-          <FilterPlug />
-        ) : (
-          <>
-            <AllSuppliers
-              data={data}
-              handleOpenEditModal={handleOpenEditModal}
-              isOpen={isEditModalOpen}
-              setIsOpen={setIsEditModalOpen}
-            />
-            <EditSuppliersModal
-              isOpen={isEditModalOpen}
-              setIsOpen={setIsEditModalOpen}
-              data={supplierData}
+      )}
+
+      {!isLoading && (
+        <div className="px-10 md:w-screen xl:w-[1360px]">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+            <FilterForm
+              page={page}
+              limit={"5"}
+              placeholder={"User Name"}
+              fetchData={fetchData}
               fetchAlldata={fetchAlldata}
+              onChangePage={setPage}
+              onChangeWordQuery={setWordQuery}
             />
-            {totalPages !== 1 && totalPages && (
-              <Pagination
-                totalPages={totalPages}
-                currentpage={page}
-                onChangePage={onChangePage}
+            <div onClick={handleOpenAddModal}>
+              <AddSuplier />
+            </div>
+          </div>
+          <AddSupplierModal
+            isOpen={isAddModalOpen}
+            setIsOpen={setIsAddModalOpen}
+            fetchAlldata={fetchAlldata}
+          />
+          {data.length === 0 ? (
+            <FilterPlug />
+          ) : (
+            <>
+              <AllSuppliers
+                data={data}
+                handleOpenEditModal={handleOpenEditModal}
+                isOpen={isEditModalOpen}
+                setIsOpen={setIsEditModalOpen}
               />
-            )}
-          </>
-        )}
-      </div>
+              <EditSuppliersModal
+                isOpen={isEditModalOpen}
+                setIsOpen={setIsEditModalOpen}
+                data={supplierData}
+                fetchAlldata={fetchAlldata}
+              />
+              {totalPages !== 1 && totalPages && (
+                <Pagination
+                  totalPages={totalPages}
+                  currentpage={page}
+                  onChangePage={onChangePage}
+                />
+              )}
+            </>
+          )}
+        </div>
+      )}
     </>
   );
 };

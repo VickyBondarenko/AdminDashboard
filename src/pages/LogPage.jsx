@@ -9,7 +9,11 @@ const LogPage = () => {
   const isLoading = useSelector(getIsLoading);
   return (
     <>
-      {isLoading && <Loader />}
+      {isLoading && (
+        <div className="w-screenMinusSideBar h-screenMinusHeader flex justify-center items-center">
+          <Loader />
+        </div>
+      )}
       {!isLoading && (
         <div className="px-5 pt-[28px] pb-[234px] md:pb-[276px] xl:pb-[262px] bg-local bg-no-repeat  bg-auto bg-authPage_mob md:bg-authPage_tab bg-right-bottom w-screen">
           <Header />

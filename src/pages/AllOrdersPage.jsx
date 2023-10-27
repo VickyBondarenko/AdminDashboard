@@ -2,9 +2,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FilterForm from "../components/FilterForm";
 import FilterPlug from "../components/FilterPlug";
+import { Loader } from "../components/Loader";
 import AllOrders from "../components/Orders/AllOrders";
 import { Pagination } from "../components/Pagination/Pagination";
-import { selectOrders, selectTotalPages } from "../redux/orders/ordersSelector";
+import {
+  getIsLoading,
+  selectOrders,
+  selectTotalPages,
+} from "../redux/orders/ordersSelector";
 import { getAllOrders, fetchSearchedOrders } from "../redux/orders/ordersThunk";
 
 const AllOrdersPage = () => {
@@ -22,6 +27,7 @@ const AllOrdersPage = () => {
   }, [page, limit]);
 
   const data = useSelector(selectOrders);
+  const isLoading = useSelector(getIsLoading);
 
   const fetchData = (params) => {
     dispatch(fetchSearchedOrders(params));
@@ -43,32 +49,39 @@ const AllOrdersPage = () => {
 
   return (
     <>
-      <div className="pl-10 ">
-        <FilterForm
-          page={page}
-          limit={"5"}
-          placeholder={"User Name"}
-          fetchData={fetchData}
-          fetchAlldata={fetchAlldata}
-          onChangePage={setPage}
-          onChangeWordQuery={setWordQuery}
-        />
-        {data.length === 0 ? (
-          <FilterPlug />
-        ) : (
-          <>
-            <AllOrders data={data} />
+      {isLoading && (
+        <div className="w-screenMinusSideBar h-screenMinusHeader flex justify-center items-center">
+          <Loader />
+        </div>
+      )}
+      {!isLoading && (
+        <div className="pl-10 ">
+          <FilterForm
+            page={page}
+            limit={"5"}
+            placeholder={"User Name"}
+            fetchData={fetchData}
+            fetchAlldata={fetchAlldata}
+            onChangePage={setPage}
+            onChangeWordQuery={setWordQuery}
+          />
+          {data.length === 0 ? (
+            <FilterPlug />
+          ) : (
+            <>
+              <AllOrders data={data} />
 
-            {totalPages !== 1 && totalPages && (
-              <Pagination
-                totalPages={totalPages}
-                currentpage={page}
-                onChangePage={onChangePage}
-              />
-            )}
-          </>
-        )}
-      </div>
+              {totalPages !== 1 && totalPages && (
+                <Pagination
+                  totalPages={totalPages}
+                  currentpage={page}
+                  onChangePage={onChangePage}
+                />
+              )}
+            </>
+          )}
+        </div>
+      )}
     </>
   );
 };
