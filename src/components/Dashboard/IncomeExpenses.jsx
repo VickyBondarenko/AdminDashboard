@@ -6,9 +6,9 @@ const IncomeExpenses = ({ data }) => {
           Income/Expenses
         </div>
         <table className="ml-4">
-          <thead className="py-5 text-start">
-            <tr className="mx-5 px-5 my-5 text-lighterText text-customS font font-medium border-b ">
-              <div className="py-5">Today</div>
+          <thead className=" ">
+            <tr className="mx-5  my-5 text-lighterText text-customS font font-medium border-b ">
+              <th className="py-5 text-start">Today</th>
             </tr>
           </thead>
           <tbody className="px-5">

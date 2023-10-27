@@ -59,7 +59,7 @@ const CustomersDataPage = () => {
       )}
 
       {!isLoading && (
-        <div className="px-10  ">
+        <div className="px-10  pb-10">
           <FilterForm
             page={page}
             limit={"5"}

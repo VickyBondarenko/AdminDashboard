@@ -55,7 +55,7 @@ const AllOrdersPage = () => {
         </div>
       )}
       {!isLoading && (
-        <div className="pl-10 ">
+        <div className="pl-10 pb-10">
           <FilterForm
             page={page}
             limit={"5"}
