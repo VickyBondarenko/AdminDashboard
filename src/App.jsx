@@ -33,7 +33,6 @@ function App() {
             </PublicRoute>
           }
         />
-
         <Route
           path="/"
           element={

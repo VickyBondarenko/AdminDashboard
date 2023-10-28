@@ -39,7 +39,6 @@ const AllProductsPage = () => {
 
   const data = useSelector(selectProducts);
   const isLoading = useSelector(getIsLoading);
-  console.log("isLoading", isLoading);
 
   const fetchData = (params) => {
     dispatch(fetchSearchedProducts(params));
