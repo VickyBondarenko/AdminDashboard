@@ -25,6 +25,6 @@ export const supplierSchema = Yup.object().shape({
   address: Yup.string().required("Address is required"),
   suppliers: Yup.string().required("Company is required"),
   date: Yup.string().required("Delivery date is required"),
-  amount: Yup.string().required("Amount preparation is required"),
-  status: Yup.string().required("Status preparation is required"),
+  amount: Yup.string().required("Amount is required"),
+  status: Yup.string().required("Status is required"),
 });

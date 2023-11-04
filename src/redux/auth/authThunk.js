@@ -45,7 +45,7 @@ export const getCurrentUser = createAsyncThunk(
       if (error.response && error.response.status === 401) {
         clearAuthHeader();
         Notify.warning("Unauthorized");
-        return { to: "/signin" };
+        return { to: "/login" };
       } else {
         return rejectWithValue(error.message);
       }
