@@ -69,13 +69,13 @@ const AllSuppliersPage = () => {
   return (
     <>
       {isLoading && (
-        <div className="w-screenMinusSideBar h-screenMinusHeader flex justify-center items-center">
+        <div className="w-screenMinusSideBar h-screenMinusHeader flex justify-center items-center border-l border-borderLight">
           <Loader />
         </div>
       )}
 
       {!isLoading && (
-        <div className="px-10 pb-10 md:w-screen xl:w-[1360px]">
+        <div className="px-10 pb-10 md:w-screen xl:w-[1360px] border-l border-borderLight">
           <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
             <FilterForm
               page={page}

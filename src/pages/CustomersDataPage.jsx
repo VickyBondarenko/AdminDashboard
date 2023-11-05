@@ -53,13 +53,13 @@ const CustomersDataPage = () => {
   return (
     <>
       {isLoading && (
-        <div className="w-screenMinusSideBar h-screenMinusHeader flex justify-center items-center">
+        <div className="w-screenMinusSideBar h-screenMinusHeader flex justify-center items-center border-l border-borderLight">
           <Loader />
         </div>
       )}
 
       {!isLoading && (
-        <div className="px-10  pb-10">
+        <div className="px-10  pb-10 border-l border-borderLight">
           <FilterForm
             page={page}
             limit={"5"}

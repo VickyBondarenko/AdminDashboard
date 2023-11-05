@@ -1,5 +1,9 @@
 import axios from "axios";
-import { setAuthHeader, clearAuthHeader } from "../../api/apiHelpers";
+import {
+  setAuthHeader,
+  clearAuthHeader,
+  returnToLogIn,
+} from "../../api/apiHelpers";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
@@ -42,13 +46,14 @@ export const getCurrentUser = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        clearAuthHeader();
-        Notify.warning("Unauthorized");
-        return { to: "/login" };
-      } else {
-        return rejectWithValue(error.message);
-      }
+      // if (error.response && error.response.status === 401) {
+      //   clearAuthHeader();
+      //   Notify.warning("Unauthorized");
+      //   return { to: "/login" };
+      // } else {
+      //   return rejectWithValue(error.message);
+      // }
+      returnToLogIn(error, rejectWithValue);
     }
   }
 );
