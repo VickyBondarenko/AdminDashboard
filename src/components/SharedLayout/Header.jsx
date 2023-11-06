@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/image/logo.svg";
@@ -7,12 +7,20 @@ import LogOutBtn from "./LogOutBtn";
 import { selectUserEmail } from "../../redux/auth/authSelector";
 
 import SubTitle from "./SubTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SideBarMenu from "./SideBarMenu";
 import Title from "./Title";
+import { getCurrentUser } from "../../redux/auth/authThunk";
 
 const Header = () => {
   const [isSideBarMenuOpen, setIsSideBarMenuOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const location = useLocation();
 

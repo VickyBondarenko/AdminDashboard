@@ -42,6 +42,9 @@ const authSlice = createSlice({
       .addCase(getCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
       })
+      .addCase(getCurrentUser.rejected, (state, action) => {
+        state.token = null;
+      })
 
       .addMatcher(
         (action) =>

@@ -39,7 +39,7 @@ export const getCurrentUser = createAsyncThunk(
 
     try {
       setAuthHeader(token);
-      const { data } = await axios.get("/api/user/current", {
+      const { data } = await axios.get("/api/user/user-info", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
