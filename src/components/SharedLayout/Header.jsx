@@ -18,13 +18,12 @@ const Header = () => {
 
   useEffect(() => {
     dispatch(getCurrentUser());
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const location = useLocation();
 
-  const userEmail = useSelector(selectUserEmail);
+  // const userEmail = useSelector(selectUserEmail);
 
   const isDesktop = useMediaQuery({
     query: "(min-width: 1440px)",
@@ -93,7 +92,7 @@ const Header = () => {
             <div className="flex flex-row items-center">
               <SubTitle text={locationText} />
               <div className="border-r h-3  border-lighterText mx-2"></div>
-              <SubTitle text={userEmail} />
+              {/* {userEmail && <SubTitle text={userEmail} />} */}
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   setAuthHeader,
   clearAuthHeader,
-  returnToLogIn,
+  // returnToLogIn,
 } from "../../api/apiHelpers";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { createAsyncThunk } from "@reduxjs/toolkit";
@@ -12,7 +12,7 @@ const VITE_BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
 axios.defaults.baseURL = VITE_BACKEND_BASE_URL;
 
 export const loginUser = createAsyncThunk(
-  `/api/auth/login`,
+  `auth/login`,
   async (userData, { rejectWithValue }) => {
     try {
       const {
@@ -29,7 +29,7 @@ export const loginUser = createAsyncThunk(
 );
 
 export const getCurrentUser = createAsyncThunk(
-  "/api/auth/current",
+  "auth/current",
   async (_, { rejectWithValue, getState }) => {
     const { token } = getState().auth;
 
@@ -46,14 +46,11 @@ export const getCurrentUser = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      // if (error.response && error.response.status === 401) {
-      //   clearAuthHeader();
-      //   Notify.warning("Unauthorized");
-      //   return { to: "/login" };
-      // } else {
-      //   return rejectWithValue(error.message);
-      // }
-      returnToLogIn(error, rejectWithValue);
+      if (error.response && error.response.status === 401) {
+        clearAuthHeader();
+        Notify.warning("Unauthorized");
+      }
+      return rejectWithValue(error.message);
     }
   }
 );
