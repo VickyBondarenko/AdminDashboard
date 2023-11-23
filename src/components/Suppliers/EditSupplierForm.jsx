@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { supplierSchema } from "../../helpers/yupShemas";
 
 import { editSupplier } from "../../redux/suppliers/suppliersThunk";
+import StyledDatepicker from "../DataPicker/DataPicker";
 
 const EditSupplierForm = ({ data, handleCloseModal, fetchAlldata }) => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const EditSupplierForm = ({ data, handleCloseModal, fetchAlldata }) => {
         isValid,
         dirty,
         resetForm,
+        setFieldValue,
       }) => (
         <Form className="flex flex-col flex-wrap pt-5 md:pt-10 ">
           <div className="flex flex-col md:flex-row md:gap-2 gap-[14px] pb-10 text-customXs text-[#9ca3af] ">
@@ -82,7 +84,6 @@ const EditSupplierForm = ({ data, handleCloseModal, fetchAlldata }) => {
                 <Field
                   autoComplete="off"
                   name="amount"
-                  //   type={passwordType}
                   placeholder="Amount"
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -103,19 +104,25 @@ const EditSupplierForm = ({ data, handleCloseModal, fetchAlldata }) => {
                   className="border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
                 />
               </label>
-              <label htmlFor="date" className="]">
+              <label htmlFor="date" className="">
                 <Field
-                  autoComplete="off"
                   name="date"
-                  type="date"
-                  placeholder="Delivery date"
-                  onfocus="(this.type='date')"
-                  onblur="(this.type='text')"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  component={StyledDatepicker}
                   value={values.date}
-                  className="border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
+                  initialDate={values.date}
+                  // onChange={handleChange}
+                  onBlur={handleBlur}
+                  setSelectedOption={(value) => setFieldValue("date", value)}
+                  selectedOption={values.date}
+                  // className="border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
                 />
+                {/* <StyledDatepicker
+                  name="date"
+                  value={values.date}
+                  initialDate={values.date}
+                
+                  className="border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
+                /> */}
               </label>
               <label htmlFor="status" className="">
                 <Field
@@ -151,7 +158,11 @@ const EditSupplierForm = ({ data, handleCloseModal, fetchAlldata }) => {
             <button
               disabled={!isValid || !dirty}
               type="submit"
-              className="bg-accent cursor-pointer text-whiteText w-[146px] md:w-[132px] p-[13px] rounded-[60px] font-medium text-[14px] leading-[18px]"
+              className={`bg-accent cursor-pointer text-whiteText w-[146px] md:w-[132px] p-[13px] rounded-[60px] font-medium text-[14px] leading-[18px] ${
+                !isValid || !dirty
+                  ? "opacity-50 cursor-not-allowed"
+                  : "opacity-100 cursor-pointer"
+              }`}
             >
               Save
             </button>
