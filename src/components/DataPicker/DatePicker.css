@@ -21,14 +21,19 @@
 }
 
 /* Стили для заголовка календаря */
+
 .react-datepicker__header {
   border-radius: 16px 16px 0 0;
+
   background-color: #59b17a; /* Цвет фона */
   border-bottom: 1px solid white; /* Граница снизу */
   padding: 8px; /* Отступы */
   padding-top: 15px;
   text-align: center;
   color: white;
+}
+.react-datepicker__header:not(.react-datepicker__header--has-time-select) {
+  border-top-right-radius: 16px; /*убирает дурацкий правый угол*/
 }
 
 .react-datepicker__current-month {
