@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import IconsSVG from "../../assets/svg/symbol-defs.svg";
-
+import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import "./DatePicker.css";
 
@@ -15,14 +15,15 @@ const StyledDatepicker = ({ initialDate, setSelectedOption }) => {
   console.log("startDate", startDate);
 
   useEffect(() => {
-    const formattedDate = startDate.toISOString().split("T")[0];
+    // const formattedDate = startDate.toISOString().split("T")[0];
+    // setSelectedOption(formattedDate);
+    const formattedDate = format(startDate, "MMMM d, yyyy");
     setSelectedOption(formattedDate);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate]);
 
   const handleChange = (date) => {
     console.log("date", date);
-
     setStartDate(date);
   };
 
@@ -31,7 +32,7 @@ const StyledDatepicker = ({ initialDate, setSelectedOption }) => {
       selected={startDate}
       onChange={handleChange}
       calendarStartDay={1}
-      dateFormat="yyyy-MM-dd"
+      dateFormat="MMMM d, yyyy"
       showIcon
       icon={
         <svg

@@ -110,7 +110,6 @@ const EditSupplierForm = ({ data, handleCloseModal, fetchAlldata }) => {
                   component={StyledDatepicker}
                   value={values.date}
                   initialDate={values.date}
-                  // onChange={handleChange}
                   onBlur={handleBlur}
                   setSelectedOption={(value) => setFieldValue("date", value)}
                   selectedOption={values.date}
