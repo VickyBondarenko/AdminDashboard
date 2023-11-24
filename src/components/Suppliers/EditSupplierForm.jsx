@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { supplierSchema } from "../../helpers/yupShemas";
 
 import { editSupplier } from "../../redux/suppliers/suppliersThunk";
-import StyledDatepicker from "../DataPicker/DataPicker";
+import StyledDatepicker from "../DataPicker/DatePicker";
 
 const EditSupplierForm = ({ data, handleCloseModal, fetchAlldata }) => {
   const dispatch = useDispatch();
@@ -114,7 +114,7 @@ const EditSupplierForm = ({ data, handleCloseModal, fetchAlldata }) => {
                   onBlur={handleBlur}
                   setSelectedOption={(value) => setFieldValue("date", value)}
                   selectedOption={values.date}
-                  // className="border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
+                  className="relative border border-borderLight rounded-[60px] py-[15px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
                 />
                 {/* <StyledDatepicker
                   name="date"

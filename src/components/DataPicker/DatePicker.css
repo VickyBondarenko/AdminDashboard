@@ -1,0 +1,95 @@
+/* DatePicker.module.css  */
+
+/* input {
+  padding: 13px 18px;
+  @apply border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent;
+} */
+/* .react-datepicker__input-container {
+  padding: 13px 18px;
+} */
+/* .react-datepicker-wrapper {
+  @apply border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent;
+} */
+.react-datepicker__input-container {
+  position: relative;
+}
+.react-datepicker__input-container input {
+  @apply border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent;
+}
+
+/* Стили для календаря */
+.react-datepicker {
+  font-family: "Arial", sans-serif;
+  background-color: #e7f1ed; /* Цвет фона */
+  border: 1px solid #59b17a; /* Граница */
+  border-radius: 16px; /* Закругление углов */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень */
+  /* position: relative; */
+}
+
+/* Стили для заголовка календаря */
+.react-datepicker__header {
+  border-radius: 16px 16px 0 0;
+  background-color: #59b17a; /* Цвет фона */
+  border-bottom: 1px solid white; /* Граница снизу */
+  padding: 8px; /* Отступы */
+  padding-top: 15px;
+  text-align: center;
+  color: white;
+}
+
+.react-datepicker__current-month {
+  color: white;
+}
+
+/* Стили для кнопок переключения месяцев */
+.react-datepicker__navigation {
+  top: 6px;
+  color: white;
+}
+
+/* Стили для кнопок внутри заголовка (левая и правая стрелки) */
+.react-datepicker__navigation--previous,
+.react-datepicker__navigation--next {
+  /* width: 10px;
+  border: 1px solid #ccc; Граница */
+  /* background-color: #f0f0f0; Цвет фона */
+  border-radius: 50%; /* Круглые кнопки */
+  color: white;
+}
+
+/* Стили для дней недели */
+.react-datepicker__day-name {
+  color: white; /* Цвет текста */
+}
+
+/* Стили для ячеек с днями месяца */
+.react-datepicker__day {
+  color: #59b17a; /* Цвет текста */
+}
+
+/* Hover стили для ячеек с днями */
+.react-datepicker__day:hover {
+  background-color: #fff; /* Цвет фона при наведении */
+}
+
+/* Стили для выбранного дня */
+.react-datepicker__day--selected {
+  background-color: #59b17a; /* Цвет фона */
+  color: #fff; /* Цвет текста */
+}
+
+/* Стили для текущего дня */
+.react-datepicker__day--today {
+  font-weight: bold; /* Жирный текст для текущего дня */
+}
+
+/* Стили для стрелок внутри месяца */
+.react-datepicker__triangle {
+  border-bottom-color: white; /* Цвет стрелок */
+}
+
+.react-datepicker__navigation-icon {
+  fill: white;
+  stroke: white;
+}
