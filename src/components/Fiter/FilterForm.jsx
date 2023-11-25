@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import IconsSVG from "../assets/svg/symbol-defs.svg";
+import IconsSVG from "../../assets/svg/symbol-defs.svg";
 
 const FilterForm = ({
   placeholder,
@@ -58,7 +58,7 @@ const FilterForm = ({
     >
       <ToastContainer />
       <input
-        className="py-[13px] px-[18px] bg-white border border-borderLight rounded-[60px] placeholder:text-customXs mr-2 md:mr-[14px] "
+        className="py-[13px] px-[18px] bg-white border border-borderLight rounded-[60px] placeholder:text-customXs mr-2 md:mr-[14px] outline-accent"
         type="text"
         placeholder={placeholder}
         value={wordQuery}

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AllCustomers from "../components/Customers/AllCustomers";
-import FilterForm from "../components/FilterForm";
-import FilterPlug from "../components/FilterPlug";
+import FilterForm from "../components/Fiter/FilterForm";
+import FilterPlug from "../components/Fiter/FilterPlug";
 import { Loader } from "../components/Loader";
 import { Pagination } from "../components/Pagination/Pagination";
 import {

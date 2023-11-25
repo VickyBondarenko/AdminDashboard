@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import FilterForm from "../components/FilterForm";
+import FilterForm from "../components/Fiter/FilterForm";
+import FilterPlug from "../components/Fiter/FilterPlug";
 import { Pagination } from "../components/Pagination/Pagination";
 import { AddSuplier } from "../components/Suppliers/AddSupplier";
 import AllSuppliers from "../components/Suppliers/AllSuppliers";
@@ -16,7 +17,7 @@ import {
 
 import EditSuppliersModal from "../components/Suppliers/EditSuppliersModal";
 import AddSupplierModal from "../components/Suppliers/AddSuppliersModal";
-import FilterPlug from "../components/FilterPlug";
+
 import { Loader } from "../components/Loader";
 
 const AllSuppliersPage = () => {
