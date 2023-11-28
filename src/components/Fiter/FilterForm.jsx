@@ -66,10 +66,10 @@ const FilterForm = ({
         onChange={handleInputChange}
       />
       <button
-        className="bg-accent gap-2 flex flex-row items-center py-[13px] px-[30px] text-white text-customXs md:text-customS font-medium rounded-[60px]"
+        className="bg-accent border border-accent gap-2 flex flex-row items-center py-[13px] px-[30px] text-white text-customXs md:text-customS font-medium rounded-[60px] hover:bg-white hover:text-accent group"
         type="submit"
       >
-        <svg className=" w-[14px] h-[14px] stroke-white fill-accent">
+        <svg className=" w-[14px] h-[14px] stroke-white fill-accent group-hover:fill-white group-hover:stroke-accent">
           <use xlinkHref={`${IconsSVG}#icon-filter`} />
         </svg>
         Filter
