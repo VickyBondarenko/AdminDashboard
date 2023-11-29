@@ -1,4 +1,13 @@
+import { useState } from "react";
+import AdressModal from "./AdressModal";
+
 const RecentCustomers = ({ data }) => {
+  const [isAdressModalOpen, setIsAdressModalOpen] = useState(false);
+
+  const handleOpenAdressModal = () => {
+    setIsAdressModalOpen(true);
+  };
+
   return (
     <>
       <div className="border border-borderLight rounded-lg  md:w-[704px] xl:w-[630px] overflow-x-scroll md:overflow-visible">
@@ -21,7 +30,7 @@ const RecentCustomers = ({ data }) => {
                 Spent
               </th>
               <th className="px-5 border-b border-l  border-borderLight text-start md:w-[131px] xl:w-[119px]">
-                Country
+                Adress
               </th>
             </tr>
           </thead>
@@ -44,9 +53,17 @@ const RecentCustomers = ({ data }) => {
                 <td className="px-5 py-5 border-l">{row.email}</td>
                 <td className="px-5 py-5 border-l">{row.spent}</td>
                 <td className="px-5 py-5 border-l ">
-                  <button className="border border-accent text-accent px-[18px] py-2 rounded-[30px]">
+                  <button
+                    onClick={handleOpenAdressModal}
+                    className="border border-accent text-accent px-[18px] py-2 rounded-[30px]"
+                  >
                     View
                   </button>
+                  <AdressModal
+                    isOpen={isAdressModalOpen}
+                    setIsOpen={setIsAdressModalOpen}
+                    adress={row.email}
+                  />
                 </td>
               </tr>
             ))}
