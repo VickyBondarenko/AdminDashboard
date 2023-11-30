@@ -3,9 +3,11 @@ import AdressModal from "./AdressModal";
 
 const RecentCustomers = ({ data }) => {
   const [isAdressModalOpen, setIsAdressModalOpen] = useState(false);
+  const [customer, setCustomer] = useState("");
 
-  const handleOpenAdressModal = () => {
+  const handleOpenAdressModal = (data) => {
     setIsAdressModalOpen(true);
+    setCustomer(data);
   };
 
   return (
@@ -54,21 +56,21 @@ const RecentCustomers = ({ data }) => {
                 <td className="px-5 py-5 border-l">{row.spent}</td>
                 <td className="px-5 py-5 border-l ">
                   <button
-                    onClick={handleOpenAdressModal}
+                    onClick={() => handleOpenAdressModal(row)}
                     className="border border-accent text-accent px-[18px] py-2 rounded-[30px]"
                   >
                     View
                   </button>
-                  <AdressModal
-                    isOpen={isAdressModalOpen}
-                    setIsOpen={setIsAdressModalOpen}
-                    adress={row.email}
-                  />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <AdressModal
+          isOpen={isAdressModalOpen}
+          setIsOpen={setIsAdressModalOpen}
+          customer={customer}
+        />
       </div>
     </>
   );

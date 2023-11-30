@@ -12,7 +12,7 @@ const authInitialState = {
   },
 
   token: null,
-  isLoading: true,
+  isLoading: false,
   isRefreshing: false,
   error: null,
 };
