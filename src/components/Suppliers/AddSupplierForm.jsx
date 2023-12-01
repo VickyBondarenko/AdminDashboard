@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { supplierSchema } from "../../helpers/yupShemas";
 
 import { addSupplier } from "../../redux/suppliers/suppliersThunk";
+import StyledDatepicker from "../DataPicker/DatePicker";
 
 const AddSupplierForm = ({ handleCloseModal, fetchAlldata }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const AddSupplierForm = ({ handleCloseModal, fetchAlldata }) => {
     name: "",
     address: "",
     suppliers: "",
-    date: "",
+    date: new Date(),
     amount: "",
     status: "",
   };
@@ -44,6 +45,7 @@ const AddSupplierForm = ({ handleCloseModal, fetchAlldata }) => {
         isValid,
         dirty,
         resetForm,
+        setFieldValue,
       }) => (
         <Form className="flex flex-col flex-wrap pt-5 md:pt-10 ">
           <div className="flex flex-col md:flex-row md:gap-2 gap-[14px] pb-10 text-customXs text-[#9ca3af] ">
@@ -98,8 +100,8 @@ const AddSupplierForm = ({ handleCloseModal, fetchAlldata }) => {
                   className="border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
                 />
               </label>
-              <label htmlFor="date" className="]">
-                <Field
+              <label htmlFor="date" className="">
+                {/* <Field
                   autoComplete="off"
                   name="date"
                   type="date"
@@ -110,6 +112,16 @@ const AddSupplierForm = ({ handleCloseModal, fetchAlldata }) => {
                   onBlur={handleBlur}
                   value={values.date}
                   className="border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
+                /> */}
+                <Field
+                  name="date"
+                  component={StyledDatepicker}
+                  value={values.date}
+                  initialDate={values.date}
+                  onBlur={handleBlur}
+                  setSelectedOption={(value) => setFieldValue("date", value)}
+                  selectedOption={values.date}
+                  className="relative border border-borderLight rounded-[60px] py-[15px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
                 />
               </label>
               <label htmlFor="status" className="">
