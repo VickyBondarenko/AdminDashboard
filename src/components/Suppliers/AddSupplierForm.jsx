@@ -67,7 +67,6 @@ const AddSupplierForm = ({ handleCloseModal, fetchAlldata }) => {
                 <Field
                   autoComplete="off"
                   name="suppliers"
-                  //   type={passwordType}
                   placeholder="Company"
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -79,7 +78,6 @@ const AddSupplierForm = ({ handleCloseModal, fetchAlldata }) => {
                 <Field
                   autoComplete="off"
                   name="amount"
-                  //   type={passwordType}
                   placeholder="Amount"
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -101,18 +99,6 @@ const AddSupplierForm = ({ handleCloseModal, fetchAlldata }) => {
                 />
               </label>
               <label htmlFor="date" className="">
-                {/* <Field
-                  autoComplete="off"
-                  name="date"
-                  type="date"
-                  placeholder="Delivery date"
-                  onfocus="(this.type='date')"
-                  onblur="(this.type='text')"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.date}
-                  className="border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
-                /> */}
                 <Field
                   name="date"
                   component={StyledDatepicker}

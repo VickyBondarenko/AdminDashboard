@@ -115,13 +115,6 @@ const EditSupplierForm = ({ data, handleCloseModal, fetchAlldata }) => {
                   selectedOption={values.date}
                   className="relative border border-borderLight rounded-[60px] py-[15px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
                 />
-                {/* <StyledDatepicker
-                  name="date"
-                  value={values.date}
-                  initialDate={values.date}
-                
-                  className="border border-borderLight rounded-[60px] py-[13px] px-[18px] w-[295px] md:w-[224px] placeholder:text-[12px] placeholder:leading-[18px]  outline-accent"
-                /> */}
               </label>
               <label htmlFor="status" className="">
                 <Field

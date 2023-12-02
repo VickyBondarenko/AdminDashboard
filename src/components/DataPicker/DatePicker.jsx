@@ -1,5 +1,3 @@
-// DatePicker.jsx
-
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import IconsSVG from "../../assets/svg/symbol-defs.svg";
@@ -15,8 +13,6 @@ const StyledDatepicker = ({ initialDate, setSelectedOption }) => {
   console.log("startDate", startDate);
 
   useEffect(() => {
-    // const formattedDate = startDate.toISOString().split("T")[0];
-    // setSelectedOption(formattedDate);
     const formattedDate = format(startDate, "MMMM d, yyyy");
     setSelectedOption(formattedDate);
     // eslint-disable-next-line react-hooks/exhaustive-deps
