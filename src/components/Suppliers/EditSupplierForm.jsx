@@ -72,7 +72,6 @@ const EditSupplierForm = ({ data, handleCloseModal, fetchAlldata }) => {
                 <Field
                   autoComplete="off"
                   name="suppliers"
-                  //   type={passwordType}
                   placeholder="Company"
                   onChange={handleChange}
                   onBlur={handleBlur}

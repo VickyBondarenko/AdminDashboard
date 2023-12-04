@@ -57,8 +57,7 @@ const AuthForm = () => {
             <Field
               autoComplete="off"
               name="password"
-              //   type={passwordType}
-              placeholder="Password"
+                     placeholder="Password"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}

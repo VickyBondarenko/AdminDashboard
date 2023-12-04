@@ -77,7 +77,6 @@ const EditProductForm = ({ data, handleCloseModal, fetchAlldata }) => {
                 <Field
                   autoComplete="off"
                   name="stock"
-                  //   type={passwordType}
                   placeholder="Stock"
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -89,7 +88,6 @@ const EditProductForm = ({ data, handleCloseModal, fetchAlldata }) => {
                 <Field
                   autoComplete="off"
                   name="price"
-                  //   type={passwordType}
                   placeholder="Price"
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -131,7 +129,6 @@ const EditProductForm = ({ data, handleCloseModal, fetchAlldata }) => {
                 <Field
                   autoComplete="off"
                   name="suppliers"
-                  //   type={passwordType}
                   placeholder="Suppliers"
                   onChange={handleChange}
                   onBlur={handleBlur}
